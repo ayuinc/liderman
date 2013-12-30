@@ -1,0 +1,61 @@
+{embed="includes/header"}
+
+<div class="row header">
+  <div class="small-12 medium-12 large-12 columns">
+	  <h3 class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus dui, ullamcorper quis metus vitae, blandit ultricies velit. Ut iaculis tortor faucibus lacus hendrerit hendrerit. <span><a href="">Lee más</a></span></h3>
+  </div>
+</div>   
+
+<div class="row carousel">
+	<div class="small-12 medium-12 large-12 columns clearfix">
+			<div class="jcarousel-wrapper">
+                <div class="jcarousel">
+                    <ul>
+						{exp:channel:entries channel="programacion" disable="categories|categories_fields|member_data|pagination"}
+                        <li class="{switch='plain|slide-central'}">
+                        <programacion>
+                           {imagen_locutor}	
+	                       	<img src="{image:url:medium}" alt="{image:title}" class="margen-arriba">
+	                       {/imagen_locutor}
+	                       <h4>{title}</h4>
+	                       <span>{nombre_programa}</span>
+	                       <p>{introduccion_programa} <br><a href="{site_url}content/{url_title}">Leer más</a></p>
+                        </programacion>
+                        </li>
+						{/exp:channel:entries}
+                    </ul>
+                </div>
+
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                <!--<p class="jcarousel-pagination"></p>-->
+            </div>
+	</div>	
+</div>
+
+
+<div id="myModal" class="reveal-modal" data-reveal>	
+	<div class="row">
+		<div class="small-12 medium-9 large-9 columns clearfix">
+			<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/8841370&amp;color=000000&amp;auto_play=false&amp;show_artwork=true"></iframe>
+		</div>
+		<div class="small-12 medium-3 large-3 columns clearfix">
+			<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/search?q=%23corgi" width="400" height="400" data-widget-id="416272318562697216">Tweets about "#corgi"</a>
+		</div>
+	</div>
+	<a class="close-reveal-modal">&#215;</a>
+	<!-- AddThis Button BEGIN -->
+	<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+		<a class="addthis_button_preferred_1"></a>
+		<a class="addthis_button_preferred_2"></a>
+		<a class="addthis_button_preferred_3"></a>
+		<a class="addthis_button_preferred_4"></a>
+		<a class="addthis_button_compact"></a>
+		<a class="addthis_counter addthis_bubble_style"></a>
+	</div>
+	<!-- AddThis Button END -->
+</div>
+
+
+{embed="includes/footer"}

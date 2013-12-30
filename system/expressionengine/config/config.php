@@ -1,10 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-$base_url .= "://".$_SERVER['HTTP_HOST'];
-$admin_url  = $base_url . '/admin.php';
-
-
 /*
 |--------------------------------------------------------------------------
 | ExpressionEngine Config Items
@@ -16,38 +11,26 @@ $admin_url  = $base_url . '/admin.php';
 |
 */
 
-$config['app_version'] = '272';
+$config['app_version'] = '273';
 $config['install_lock'] = "";
-$config['license_number'] = 'CORE LICENSE';
+$config['license_number'] = '4630-2858-5276-6671';
 $config['debug'] = '1';
 $config['cp_url'] = 'http://205.186.145.35/admin.php';
 $config['doc_url'] = 'http://ellislab.com/expressionengine/user-guide/';
 $config['is_system_on'] = 'y';
 $config['allow_extensions'] = 'y';
-$config['site_label'] = 'Liderman';
+$config['site_label'] = 'Radio Urbe';
 $config['cookie_prefix'] = '';
 
+$config['sc_paypal_account'] = "";
+$config['sc_encrypt_buttons'] = "n";
+$config['sc_certificate_id'] = "";
+$config['sc_public_certificate'] = "";
+$config['sc_private_key'] = "";
+$config['sc_paypal_certificate'] = "";
+$config['sc_temp_path'] = "/tmp";
 
-/* CodeIgniter Configuration
--------------------------------------------------------------------*/
-$config['base_url'] = $config['site_url'];
-$config['uri_protocol'] = 'AUTO';
-$config['language'] = 'english';
-$config['charset'] = 'UTF-8';
-$config['subclass_prefix'] = 'EE_';
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\\-';
-$config['enable_query_strings'] = FALSE;
-$config['directory_trigger'] = 'D';
-$config['controller_trigger'] = 'C';
-$config['function_trigger'] = 'M';
-$config['log_threshold'] = 0;
-$config['log_path'] = '';
-$config['log_date_format'] = 'Y-m-d H:i:s';
-$config['time_reference'] = 'local';
-
-
-//------------------------------END-STUFF ADDED--------------------------
-
+// END EE config items
 
 
 /*
@@ -61,7 +44,7 @@ $config['time_reference'] = 'local';
 |	http://example.com/
 |
 */
-//$config['base_url']	= '';
+$config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
@@ -73,7 +56,7 @@ $config['time_reference'] = 'local';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "";
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +74,7 @@ $config['index_page'] = "";
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-//$config['uri_protocol']	= 'AUTO';
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
@@ -116,7 +99,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-//$config['language']	= 'english';
+$config['language']	= 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -127,7 +110,7 @@ $config['url_suffix'] = '';
 | that require a character set to be provided.
 |
 */
-//$config['charset'] = 'UTF-8';
+$config['charset'] = 'UTF-8';
 
 /*
 |--------------------------------------------------------------------------
@@ -153,7 +136,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-//$config['subclass_prefix'] = 'EE_';
+$config['subclass_prefix'] = 'EE_';
 
 
 /*
@@ -173,7 +156,7 @@ $config['enable_hooks'] = FALSE;
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-//$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\\-';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\\-';
 
 
 /*
@@ -198,10 +181,10 @@ $config['enable_hooks'] = FALSE;
 | use segment based URLs.
 |
 */
-//$config['enable_query_strings'] = FALSE;
-//$config['directory_trigger'] = 'D';
-//$config['controller_trigger'] = 'C';
-//$config['function_trigger'] = 'M';
+$config['enable_query_strings'] = FALSE;
+$config['directory_trigger'] = 'D';
+$config['controller_trigger'] = 'C';
+$config['function_trigger'] = 'M';
 
 /*
 |--------------------------------------------------------------------------
@@ -221,7 +204,7 @@ $config['enable_hooks'] = FALSE;
 | your log files will fill up very fast.
 |
 */
-//$config['log_threshold'] = 0;
+$config['log_threshold'] = 0;
 
 /*
 |--------------------------------------------------------------------------
@@ -232,7 +215,7 @@ $config['enable_hooks'] = FALSE;
 | system/logs/ folder.  Use a full server path with trailing slash.
 |
 */
-//$config['log_path'] = '';
+$config['log_path'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -243,7 +226,7 @@ $config['enable_hooks'] = FALSE;
 | codes to set your own date formatting
 |
 */
-//$config['log_date_format'] = 'Y-m-d H:i:s';
+$config['log_date_format'] = 'Y-m-d H:i:s';
 
 /*
 |--------------------------------------------------------------------------
@@ -320,7 +303,7 @@ $config['compress_output'] = FALSE;
 | regarding date handling.
 |
 */
-//$config['time_reference'] = 'local';
+$config['time_reference'] = 'local';
 
 
 /*
