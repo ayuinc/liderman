@@ -1,0 +1,129 @@
+
+{exp:freeform:form
+    form_id="1"
+    required="name|email"
+    return="gracias/index"
+    inline_errors="yes"
+}
+ 
+    {if freeform:general_errors}
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns">    
+        <p>Error(es) en el envío:</p>
+        <ul>
+            {freeform:general_errors}
+            <li>{freeform:error_message}</li>
+            {/freeform:general_errors}
+        </ul>
+        </div>
+	</div>
+    {/if}
+ 
+	<div class="row">
+		<div class="small-12 medium-6 large-6 columns">
+	        <label>{freeform:label:first_name}</label>
+	        {freeform:field:first_name}
+	 
+	        {if freeform:error:first_name}
+	            <span class="error">
+	                {freeform:error:first_name}
+	            </span>
+	        {/if}
+		</div>
+		<div class="small-12 medium-6 large-6 columns">
+	        <label>{freeform:label:last_name}</label>
+	        {freeform:field:last_name}
+	 
+	        {if freeform:error:last_name}
+	            <span class="error">
+	                {freeform:error:last_name}
+	            </span>
+	        {/if}
+		</div>		
+	</div>
+
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns">
+	        <label>{freeform:label:email}</label>
+	        {freeform:field:email}
+	 
+	        {if freeform:error:email}
+	            <span class="error">
+	                {freeform:error:email}
+	            </span>
+	        {/if}
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="small-12 medium-6 large-6 columns">
+	        <label>{freeform:label:celular}</label>
+	        {freeform:field:celular}
+	 
+	        {if freeform:error:celular}
+	            <span class="error">
+	                {freeform:error:celular}
+	            </span>
+	        {/if}
+		</div>
+		<div class="small-12 medium-6 large-6 columns">
+	        <label>{freeform:label:dni}</label>
+	        {freeform:field:dni}
+	 
+	        {if freeform:error:dni}
+	            <span class="error">
+	                {freeform:error:dni}
+	            </span>
+	        {/if}
+		</div>		
+	</div>	
+
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns">
+        <label>{freeform:label:ubicacion}</label>
+        {freeform:field:ubicacion}<br />
+        {if freeform:error:ubicacion}
+            <span class="error">
+                {freeform:error:ubicacion}
+            </span>
+        {/if}
+		</div>
+	</div> 
+
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns">
+        <label>{freeform:label:user_message}</label>
+        {freeform:field:user_message}<br />
+        {if freeform:error:user_message}
+            <span class="error">
+                {freeform:error:user_message}
+            </span>
+        {/if}
+		</div>
+	</div>
+ 
+    {if freeform:captcha}
+	<div class="row">
+		<div class="small-12 medium-8 large-8 columns">    
+        <p>Inserte las letras que ve en la imagen:</p>
+		<div class="row">
+			<div class="small-6 medium-6 large-6 columns"> 
+				{freeform:captcha}
+			</div>
+			<div class="small-6 medium-6 large-6 columns">
+				<input type="text" name="captcha" style="width:140px;" />
+			</div>
+		</div>			
+		
+		</div>
+	</div>
+
+    {/if}
+ 
+ 	<div class="row">
+		<div class="small-12 medium-6 large-6 columns">
+			<p><input type="submit" class="button expand" value="ENVIAR LA INFORMACIÓN"></p>
+		</div>
+ 	</div>
+ 
+{/exp:freeform:form}

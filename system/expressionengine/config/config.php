@@ -13,11 +13,11 @@
 
 $config['app_version'] = '273';
 $config['install_lock'] = "";
-$config['license_number'] = '4630-2858-5276-6671';
+$config['license_number'] = "4630-2858-5276-6671";
 $config['debug'] = '1';
 $config['cp_url'] = 'http://205.186.145.35/admin.php';
-$config['doc_url'] = 'http://ellislab.com/expressionengine/user-guide/';
-$config['is_system_on'] = 'y';
+$config['doc_url'] = "http://ellislab.com/expressionengine/user-guide/";
+$config['is_system_on'] = "y";
 $config['allow_extensions'] = 'y';
 $config['site_label'] = 'Radio Urbe';
 $config['cookie_prefix'] = '';
@@ -29,8 +29,11 @@ $config['sc_public_certificate'] = "";
 $config['sc_private_key'] = "";
 $config['sc_paypal_certificate'] = "";
 $config['sc_temp_path'] = "/tmp";
+$config['ip2nation'] = "y";
+$config['ip2nation_db_date'] = "1335677198";
 
 // END EE config items
+
 
 
 /*
@@ -56,7 +59,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = "index.php";
 
 /*
 |--------------------------------------------------------------------------

@@ -3,14 +3,72 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RadioUrbe</title>
+    <title>{if embed:titulo} {embed:titulo} | {/if}RadioUrbe</title>
     <link rel="stylesheet" href="{site_url}css/foundation.css" />
     <link rel="stylesheet" href="{site_url}css/custom.css" />
     <script src="{site_url}js/modernizr.js"></script>
+    
+    
+	<!-- for Google -->
+	{if embed:descripcion}
+	<meta name="description" content="{embed:descripcion}" />
+	{if:else}
+	<meta name="description" content="" />
+	{/if}
+	<meta name="keywords" content="Radio, Liderman, Información, Programas, Noticias" />
+	<meta name="author" content="RadioUrbe" />
+	<meta name="copyright" content="RadioUrbe" />
+	<meta name="application-name" content="RadioUrbe" />
+	
+	<!-- for Facebook -->     
+	{if embed:titulo}     
+	<meta property="og:title" content="{embed:titulo} | RadioUrbe" />
+	{if:else}
+	<meta property="og:title" content="RadioUrbe" />
+	{/if}
+	<meta property="og:type" content="article" />
+	
+
+	{if segment_1==''}
+	<meta property="og:url" content="{site_url}" />
+	<meta property="og:image" content="{site_url}images/basic_images/logo_radio_urbe.png" />
+	{/if}
+
+	{if segment_2=='conductor'}
+	<meta property="og:url" content="{site_url}programacion/conductor/{embed:url-nombre}" />
+	<meta property="og:image" content="{embed:imagen-conductor}"/>
+	{/if}
+	
+	{if segment_2=='articulo'}
+	<meta property="og:url" content="{site_url}noticias/articulo/{embed:url-nombre}" />
+		{if embed:imagen-noticia!=''}
+		<meta property="og:image" content="{embed:imagen-noticia}"/>
+		{if:else}
+		<meta property="og:image" content="http://img.youtube.com/vi/{embed:video-noticia}/1.jpg"/>
+		{/if}
+	{/if}	
+	
+	{if embed:descripcion}
+	<meta property="og:description" content="{embed:descripcion}" />
+	{if:else}
+	<meta property="og:description" content="" />
+	{/if}
+	
+	<!-- for Twitter -->          
+	<meta name="twitter:card" content="summary" />
+	{if embed:titulo}     
+	<meta name="twitter:title" content="Comenta en {embed:titulo} usando {embed:share-tw} @RadioUrbeperu" />
+	{if:else}
+	<meta name="twitter:title" content="RadioUrbe" />
+	{/if}	
+	<meta name="twitter:description" content="{embed:descripcion}" />
+	<meta name="twitter:image" content="{site_url}images/basic_images/logo_radio_urbe.png" />
+    
+    
   </head>
   <body>
   
-<nav class="top-bar" data-topbar>
+<nav class="top-bar" data-magellan-expedition="fixed" data-topbar>
   <ul class="title-area">
     <li class="name">
       <h1><a href="{site_url}"><img src="{site_url}images/basic_images/logo_radio_urbe.png"></a></h1>
@@ -20,15 +78,19 @@
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="has-form"><a href="http://foundation.zurb.com/docs" class="button alert small" data-reveal-id="myModal">EN VIVO <img src="{site_url}images/basic_images/on_air.png"></a></li>
-    </ul>
+    <!--<ul class="right">
+      <li class="has-form boton-largo">
+      	<a href="http://foundation.zurb.com/docs" class="button alert small" data-reveal-id="myModal">ESCÚCHANOS </a>
+      </li>
+    </ul>-->
 
     <!-- Left Nav Section -->
-    <ul class="right">
-      <li><a href="#" class="active">QUIENES SOMOS</a></li>
-      <li><a href="#" class="active">PROGRAMACIÓN</a></li>
-      <li><a href="#" class="active">ERES UN LIDERMAN</a></li>
+    <ul class="right navegacion-principal">
+      <li><a href="{site_url}quienes-somos" class="active">QUIÉNES SOMOS</a></li>
+      <li><a href="{site_url}programacion" class="active">PROGRAMACIÓN</a></li>
+      <li><a href="{site_url}noticias" class="active">NOTICIAS</a></li>
+      <li><a href="{site_url}eres-un-liderman" class="active">LIDERCHAT</a></li>
+      <li><a href="{site_url}chat-del-ciudadano" class="active">CHAT DEL CIUDADANO</a></li>
     </ul>   
   </section>
 </nav>  

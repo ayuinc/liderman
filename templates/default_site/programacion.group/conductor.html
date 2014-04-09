@@ -1,0 +1,79 @@
+{exp:channel:entries channel="programacion" disable="categories|categories_fields|member_data|pagination"}
+{imagen_locutor}
+{embed="includes/header" descripcion="{introduccion_programa}" titulo="{title}" share-tw="{cuenta_de_twitter_programa}" url-nombre="{url_title}" imagen-conductor="{image:url:medium}"}
+{/imagen_locutor}
+
+<div class="row contenido">
+	<div class="small-12 medium-5 large-5 columns contenido-izquierdo">
+		<div class="panel">
+			{embed="includes/player" id_programa="{streaming-programa}"}
+			
+			<div class="row lateral-margenes-bajo">
+				<div class="small-12 medium-12 large-12 columns">
+					{embed="includes/share-buttons" share-tw="{cuenta_de_twitter_programa}" titulo-tw="{title}"}
+				</div>
+			</div>
+	
+			{embed="includes/noticias" }		
+				
+			{if soundcloud-programa}
+				<div class="row titulo-ultimas-noticias">
+					<div class="small-centered medium-12 large-12 columns">
+						<h4>LO MÁS RECOMENDADO</h4>
+					</div>	
+				</div> 
+						  	
+				<div class="row">
+				  	<div class="small-12 medium-12 large-12 columns lateral-margenes-bajo">
+				
+				  		{soundcloud-programa}	
+				
+				</div>
+				</div>  
+				
+			{/if}	
+
+		</div>
+	</div>	
+	<div class="small-12 medium-7 large-7 columns contenido-derecho">
+		<div class="panel">
+			<div class="row">
+				<div class="small-12 medium-5 large-5 columns">
+					{imagen_locutor limit="1"}
+						<img src="{image:url:medium}">
+					{/imagen_locutor}
+				</div>
+				<div class="small-12 medium-7 large-7 columns">
+					<h3>{title}</h3>
+					<h5>{nombre_programa}</h5>
+					{contenido_programa}
+					
+					<div class="row">
+						<div class="small-12 medium-12 large-12 columns">		
+							<h6>SIGUEME EN LAS REDES</h6>
+							<ul class="inline-list">
+								{if cuenta_de_facebook_programa}
+								<li>
+									<iframe src="//www.facebook.com/plugins/like.php?href={cuenta_de_facebook_programa}&amp;width=100&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=65&amp;appId=680172951995832" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
+								</li>
+								{/if}
+								<li>
+									<a href="https://twitter.com/radiourbeperu" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @radiourbeperu</a>
+		  						</li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>				
+			</div>
+			<div class="row">
+				<div class="small-12 medium-12 large-12 columns">
+					<h3 class="rojo-con-linea">COMENTA EN VIVO</h3>
+					<div id="disqus_thread"></div>
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>
+{/exp:channel:entries}
+{embed="includes/footer"}

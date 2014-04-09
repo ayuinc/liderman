@@ -1,0 +1,30 @@
+{exp:channel:entries channel="chat_del_ciudadano" disable="categories|categories_fields|member_data|pagination"}
+{embed="includes/header" descripcion="{subtitulo-eres-pagina}" titulo="{title}"}
+
+<div class="row contenido">
+	<div class="small-12 medium-5 large-5 columns contenido-izquierdo">
+		<div class="panel">
+			{imagen-eres-pagina}
+				<img src="{image:url:medium}">
+			{/imagen-eres-pagina}
+				
+			{embed="includes/share-buttons"}	
+			
+		</div>	
+	</div>	
+	<div class="small-12 medium-7 large-7 columns contenido-derecho">
+		<div class="panel contenido-panel-derecho">
+			<h2>{title}</h2>
+			<h3>{subtitulo-eres-pagina}</h3>
+			
+			{contenido-eres-pagina}
+			
+			<br>
+			<h3>PREGÚNTALE A un OFICIAL EN RETIRO</h3>
+			<div id="disqus_thread"></div>
+			
+		</div>
+	</div>		
+</div>
+{/exp:channel:entries}
+{embed="includes/footer"}
