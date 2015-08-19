@@ -15,15 +15,16 @@
 }
 
 .mt-37{
-  margin-top: 37px;
+  margin-top: 37px !important;
 }
-
+.chatea-con-nosotros{
+    position: relative !important; 
+    bottom: 27px !important;
+}
 .chatea-con-nosotros {
 	background-color:#E3389B;
-	margin-bottom: -1.1rem;
-    position: relative; 
+	margin-bottom: -1.1rem; 
 	min-height: 6rem;
-    bottom: 27px	
 }
 .chatea-con-nosotros ul li {
 	color: #fff;
