@@ -6,7 +6,47 @@
 <div class="row contenido">
 	<div class="small-12 medium-5 large-5 columns contenido-izquierdo">
 		<div class="panel">
+			<div class="show-for-large-up">
 			{embed="includes/player" id_programa="{streaming-programa}"}
+			</div>
+			
+			<div class="row lateral-margenes-bajo show-for-medium-down">
+				<div class="small-12 medium-12 large-12 columns">
+					<div class="row">
+						<div class="small-12 medium-12 large-12 columns">
+							<h2>Escúchanos</h2>
+							<p>Selecciona uno de las opciones de la lista y participa de nuestra programación.</p>
+						</div>
+						{if segment_3=='capacitaciones'}
+							<div class="small-12 medium-12 large-12 columns">
+								<a href="rtsp://184.154.28.210/radiourbecapacitaciones/radiourbecapacitaciones" class="button expand">Android</a>
+							</div>
+							<div class="small-12 medium-12 large-12 columns">	
+								<a href="http://184.154.28.210:1935/radiourbecapacitaciones/radiourbecapacitaciones/playlist.m3u8" class="button expand">iPhone</a>
+							</div>
+							<div class="small-12 medium-12 large-12 columns">
+								<a href="http://184.154.28.210:1935/radiourbecapacitaciones/radiourbecapacitaciones/playlist.m3u8"  class="button expand">iPad</a>
+							</div>
+							<div class="small-12 medium-12 large-12 columns">
+								<a href="rtsp://184.154.28.210/radiourbecapacitaciones/radiourbecapacitaciones" class="button expand">Blackberry</a>
+							</div>
+						{/if:else}
+							<div class="small-12 medium-12 large-12 columns">
+								<a href="rtsp://184.154.28.210/radiourbe/radiourbe" class="button expand">Android</a>
+							</div>
+							<div class="small-12 medium-12 large-12 columns">	
+								<a href="http://184.154.28.210:1935/radiourbe/radiourbe/playlist.m3u8" class="button expand">iPhone</a>
+							</div>
+							<div class="small-12 medium-12 large-12 columns">
+								<a href="http://184.154.28.210:1935/radiourbe/radiourbe/playlist.m3u8"  class="button expand">iPad</a>
+							</div>
+							<div class="small-12 medium-12 large-12 columns">
+								<a href="rtsp://184.154.28.210/radiourbe/radiourbe" class="button expand">Blackberry</a>
+							</div>
+						{/if}
+					</div>
+				</div>
+			</div>
 			
 			<div class="row lateral-margenes-bajo">
 				<div class="small-12 medium-12 large-12 columns">
@@ -14,21 +54,23 @@
 				</div>
 			</div>
 	
-			{embed="includes/noticias" }		
+			<div class="show-for-medium-up">
+			{embed="includes/noticias" }	
+			</div>	
 				
 			{if soundcloud-programa}
-				<div class="row titulo-ultimas-noticias">
+				<div class="row titulo-ultimas-noticias show-for-medium-up">
 					<div class="small-centered medium-12 large-12 columns">
 						<h4>LO MÁS RECOMENDADO</h4>
 					</div>	
 				</div> 
 						  	
-				<div class="row">
+				<div class="row show-for-medium-up">
 				  	<div class="small-12 medium-12 large-12 columns lateral-margenes-bajo">
 				
 				  		{soundcloud-programa}	
 				
-				</div>
+				  	</div>
 				</div>  
 				
 			{/if}	
@@ -37,19 +79,23 @@
 	</div>	
 	<div class="small-12 medium-7 large-7 columns contenido-derecho">
 		<div class="panel">
+			
 			<div class="row">
-				<div class="small-12 medium-5 large-5 columns">
+				<div class="small-12 medium-12 large-5 columns">
 					{imagen_locutor limit="1"}
 						<img src="{image:url:medium}">
 					{/imagen_locutor}
+					
 				</div>
-				<div class="small-12 medium-7 large-7 columns">
+				<div class="small-12 medium-12 large-7 columns">
+					
+					
 					<h3>{title}</h3>
-					<h5>{nombre_programa}</h5>
+					<h5>{nombre_programa}</h5>					
 					{contenido_programa}
 					
-					<div class="row">
-						<div class="small-12 medium-12 large-12 columns">		
+					<div class="row conductor-sigueme-redes">
+						<div class="small-12 medium-12 large-12 columns medium-margen">		
 							<h6>SIGUEME EN LAS REDES</h6>
 							<ul class="inline-list">
 								{if cuenta_de_facebook_programa}
@@ -62,18 +108,37 @@
 		  						</li>
 							</ul>
 						</div>
-					</div>
+					</div>					
+					
+
 					
 				</div>				
 			</div>
 			<div class="row">
 				<div class="small-12 medium-12 large-12 columns">
 					<h3 class="rojo-con-linea">COMENTA EN VIVO</h3>
-					<div id="disqus_thread"></div>
+					{!--if segment_3=='medio-pasaje'--}
+						{!--embed="includes/form-comments"--}
+					{!--if:else--}
+						<div id="disqus_thread"></div>
+						<!--<div id="livefyre-comments"></div>-->
+					{!--/if--}
 				</div>
 			</div>
 		</div>
 	</div>		
 </div>
 {/exp:channel:entries}
+
+<script>
+	function registrate() {
+		$('#ingresa-login').fadeOut(5);
+		$('#registrate-login').fadeIn(500);
+	}
+	function registrate_off() {
+		$('#registrate-login').fadeOut(5);
+		$('#ingresa-login').fadeIn(500);
+	}
+</script>
+
 {embed="includes/footer"}

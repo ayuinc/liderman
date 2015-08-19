@@ -1,0 +1,32 @@
+								{exp:user:register
+								    return="seguridad-ciudadana/index"
+								    group_id="5" 
+								    required="username|password" 
+								    error_page="seguridad-ciudadana/error" 
+								}	
+											    <div class="row">
+											    	<div class="small-12 medium-12 large-12 columns">
+											    		<h3>Registrate</h3>
+											    		<p>Para poder repotar un hecho debes estar registrado.</p>
+											    	</div>								    
+											    	<div class="small-12 medium-12 large-12 columns">
+											    		<lable>Nombre</lable>
+											    		<input type="text" name="screen_name" placeholder="Nombre"/>
+											    	</div>							    
+											    	<div class="small-12 medium-12 large-12 columns">
+											    		<lable>Correo</lable>
+											    		<input type="text" name="username" placeholder="Correo"/>
+											    	</div>
+											    	<div class="small-12 medium-12 large-12 columns">
+											    		<lable>Contreña</lable>
+											    		<input type="password" name="password" placeholder="Contraseña"/>
+											    	</div>		
+											    	<div class="small-12 medium-12 large-12 columns">
+											    		<input type="hidden" name="accept_terms" value="y" />
+												    	<input type="submit" value="REGISTRAR" class="button expand" />
+											    	</div>	
+											    	<div class="small-12 medium-12 large-12 columns">
+												    	<p>¿Ya estas <a onclick="registrate_off()">registrado</a>?</p>
+											    	</div>		    					    						    	
+											    </div>
+								{/exp:user:register}	

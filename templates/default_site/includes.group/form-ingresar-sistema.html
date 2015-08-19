@@ -1,0 +1,29 @@
+							    <div class="row">
+							    	<div class="small-12 medium-12 large-12 columns">
+							    		<h3>Ingresar</h3>
+							    	</div>							    
+								{exp:member:login_form return="seguridad-ciudadana/index" name="seguridad"}
+							    	<div class="small-12 medium-12 large-12 columns">
+										<lable>Correo Electrónico</lable>
+							    		<input type="text" name="username" value="">
+							    	</div>	
+							    	<div class="small-12 medium-12 large-12 columns">
+							    		<lable>Contraseña</lable>
+							    		<input type="password" name="password" value="">
+							    	</div>	
+							    	<div class="small-12 medium-12 large-12 columns">
+							    		<p><a  onclick="password_on()">¿Olvidaste tu Contraseña?</a>
+							        {if auto_login}
+							        	<br><small><input type="checkbox" name="auto_login" value="1"> Recuerdame</small>
+							        {/if}
+							        	</p>
+							        </div>
+							        <div class="small-12 medium-12 large-12 columns">
+							        	<p><input type="submit" name="submit" value="INGRESAR" class="button expand"></p>
+							        </div>
+							        <div class="small-12 medium-12 large-12 columns">
+							        	<p>¿No tienes cuenta? <a onclick="registrate()">regístrate</a>.</p>
+							        </div>							        
+							        
+								{/exp:member:login_form}					    					    						    	
+							    </div>

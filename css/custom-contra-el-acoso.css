@@ -1,0 +1,359 @@
+/*general styles*/
+html{
+	font-size: 16px;
+}
+body{
+	font-weight: 100;
+	font-family: "jaf-bernino-sans-condensed",sans-serif;
+}
+/*header*/
+header{
+	font-size: 3em;
+	text-transform: uppercase;
+	position: relative;
+}
+header img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	z-index: -1;
+}
+header .main-button{
+	margin-top: 2.8%;
+	margin-bottom: 10%;	
+	display: inline-block;
+}
+.main-button{
+	background-color: #ef4136;
+	border-radius: 3px 3px 0 0;
+	border-top: 5px solid #f47b73;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	color: #fff;
+	padding: 0.7rem 2rem;
+}
+a.main-button{
+	color: #fff;
+}
+header button:hover,
+header button:active,
+header button:focus{
+	background-color: #ef4136;
+}
+.top-bar{
+	background: transparent;
+	border: none;
+}
+.top-bar-section ul{
+	display: inline-block;
+	background: transparent;
+}
+.top-bar-section ul li{
+	margin-right: 10px;
+	background: transparent;
+}
+.top-bar-section ul li > a{
+	display: inline-block;
+	background: url(../images/contra-el-acoso/liderman_logo.png) bottom no-repeat !important;
+	padding: 40px 100px !important;
+}
+.top-bar-section ul li.urbe > a{
+	background: url(../images/contra-el-acoso/radio_urbe_logo.png) bottom no-repeat !important;
+}
+.top-bar-section ul li.ministerio > a{
+	background: url(../images/contra-el-acoso/ministerio_logo.png) bottom no-repeat !important;
+}
+header .main-text{
+	width: 58%;
+	margin: 8% auto 2%;
+	line-height: 1.4em;
+}
+header .second-text{
+	font-size: 0.55em;
+	width: 33%;
+	margin: 0 auto;
+	line-height: 1.2em;
+}
+header .bottom-text{
+
+	font-size: 0.3em;
+	position: absolute;
+	left: 33%;
+	bottom: 5%;
+}
+.orange{
+	color: #ef4136;
+}
+.white{
+	color: #fff;
+}
+.big-text{
+	font-size: 1.8em;
+}
+.chat-button{
+	position: fixed;
+	right: 30px;
+	bottom: 0px;
+	z-index: 100;
+}
+.chat-button a{
+	background-image: url(../images/contra-el-acoso/chat-icon.jpg);
+	background-repeat: no-repeat;
+	background-size: 15%;
+	background-position: 6% 60%;
+	background-color: #ef4136;
+	border-radius: 3px 3px 0 0;
+	border-top: 5px solid #f47b73;
+	font-size: 0.55em;
+	padding: 8% 12% 8% 24%;
+	color: #fff;
+	text-transform: none;
+	min-width: 100%;
+	display: inline-block;
+}
+/*content*/
+body > section{
+	margin-top: 10%;
+}
+section .content{
+	text-align: center;
+}
+.content h1{
+	text-transform: uppercase;
+	color: #ef4136;
+}
+section .content ul{
+	list-style: none;
+}
+section .content-top li .circle{
+	border: 1px solid;
+	border-radius: 70%;
+	font-size: 4em;
+	width: 62%;
+	margin: 0 auto;
+	padding: 14.5% 0;
+	position: relative;
+		-webkit-transition: all 200ms ease-out 200ms;
+	-moz-transition: all 200ms ease-out 200ms;
+	-o-transition: all 200ms ease-out 200ms;
+	transition: all 200ms ease-out 200ms;
+}
+section .content-top li .circle:after{
+	content: '';
+	position: absolute;
+	border: 1px solid;
+	width: 96%;
+	height: 96%;
+	left: 2%;
+	top: 2%;
+	border-radius: 50%;
+}
+section .content-top li:hover .circle{
+	box-shadow: inset 0 0 0 5px #ef4136;
+	color: #ef4136;
+	-webkit-transition: all 200ms ease-out 200ms;
+	-moz-transition: all 200ms ease-out 200ms;
+	-o-transition: all 200ms ease-out 200ms;
+	transition: all 200ms ease-out 200ms;
+}
+section .content-top li:hover .circle-text{
+	color: #ef4136;
+	-webkit-transition: all 200ms ease-out 200ms;
+	-moz-transition: all 200ms ease-out 200ms;
+	-o-transition: all 200ms ease-out 200ms;
+	transition: all 200ms ease-out 200ms;
+}
+ul.statistics.row {
+	width: 80%;
+	margin: 6.4% auto;
+}
+.statistics .circle-text{
+	font-family: "clavo-n3","clavo",sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 1.5em;
+	margin-top: 20px;
+	text-transform: capitalize;
+	-webkit-transition: all 200ms ease-out 200ms;
+	-moz-transition: all 200ms ease-out 200ms;
+	-o-transition: all 200ms ease-out 200ms;
+	transition: all 200ms ease-out 200ms;
+}
+.statistics.second{
+	margin: 10% 0;
+	font-size: 1.5em;
+	text-transform: uppercase;
+}
+.statistics.second ul{
+	text-align: left;
+}
+.statistics .text_left{
+	padding: 35% 16% 35% 0;
+	background: url(../images/contra-el-acoso/statistic-icon1.png) no-repeat right;
+	font-size: 1.1em;
+}
+.text_right li{
+	margin-bottom: 6%;
+}
+.text_right span:nth-child(1){
+	padding: 0% 15% 0% 0;
+	background: url(../images/contra-el-acoso/statistic-icon2.png) no-repeat right;
+	font-size: 3em;
+	margin-right: 10%;
+}
+.text_right .text-stats{
+	font-family: "clavo-n3","clavo",sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 1.5em;
+	text-transform: none;
+}
+footer{
+	background-image: url(../images/contra-el-acoso/footer-bg-icon.png),
+										url(../images/contra-el-acoso/footer-bg-line.png),
+										url(../images/contra-el-acoso/footer-bg.png);
+	background-repeat: no-repeat, repeat-x, repeat;
+	background-position: center top, center top, center;
+}
+.footer-first{
+	position: relative;
+	margin-top: 7rem;
+	margin-bottom: 4rem;
+}
+.footer-first div{
+	font-size: 2.8rem;
+	position: absolute;
+	top: 25%;
+	width: 50%;
+	left: 26%;
+}
+.footer-second{
+	margin-bottom: 3rem;
+}
+.footer-second div{
+	font-family: "clavo-n3","clavo",sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 1.6rem;
+}
+.footer-second div:nth-child(1){
+	line-height: 1.5;
+}
+.footer-second .orange{
+	font-size: 1.4rem;
+}
+#footer .main-button{
+	margin: 2rem 0;
+}
+#footer .main-button{
+	/*padding: 3% 5%;*/
+	display: inline-block;
+	width: 30%;
+	font-weight: 100;
+	font-family: "jaf-bernino-sans-condensed",sans-serif;
+}
+#footer .footer-third{
+	background: #313233;
+	padding: 3rem 0;
+}
+#modalForm .form-title{
+	font-family: "clavo-n1","clavo",sans-serif;
+	font-style: normal;
+	font-weight: 100;
+	padding: 1rem 4rem 2rem;
+	text-align: center;
+	font-size: 2rem;
+}
+#modalForm select,
+#modalForm input[type="text"]{
+	border-color: #EF4136;
+	border-radius: 5px;
+	color: #EF4136;
+	min-height: 2.8rem;
+	font-size: 1.3rem;
+	padding: 0.2rem 1rem;
+	font-weight: normal;
+}
+#modalForm label{
+	font-size: 2rem;
+	text-transform: capitalize;
+	font-weight: 100;
+	color: #000;
+	padding-top: 0.5rem;
+	margin-bottom: 2rem;
+}
+#modalForm .main-button{
+	margin-top: 0;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+}
+#modalForm label small{
+	color: #EF4136;
+	font-size: 2rem;
+}
+.reveal-modal {
+	left: 58%;
+	width: 60%;
+	background-color: #fff;
+}
+.reveal-modal .close-reveal-modal{
+	background: #ef4136;
+}
+@media screen and (min-width: 200px){
+  header{
+    font-size: 1em;
+  }
+}
+@media screen and (min-width: 320px){
+  header{
+    font-size: 1.2em;
+  }
+}
+@media screen and (min-width: 570px){
+  header{
+    font-size: 1.3em;
+  }
+}
+@media screen and (min-width: 620px){
+  header{
+    font-size: 1.4em;
+  }
+}
+@media screen and (min-width: 680px){
+  header{
+    font-size: 1.5em;
+  }
+}
+@media screen and (min-width: 720px){
+  header{
+    font-size: 1.6em;
+  }
+}
+@media screen and (min-width: 800px){
+  header{
+    font-size: 1.7em;
+  }
+}
+@media screen and (min-width: 860px){
+  header{
+    font-size: 1.8em;
+  }
+}
+@media screen and (min-width: 920px){
+  header{
+    font-size: 2em;
+  }
+}
+@media screen and (min-width: 1000px){
+  header{
+    font-size: 2.5em;
+  }
+}
+@media screen and (min-width: 1300px){
+  header{
+    font-size: 3em;
+  }
+}

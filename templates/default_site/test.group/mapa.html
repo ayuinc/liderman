@@ -1,0 +1,5 @@
+{exp:gmap:init id="map" class="google-map" style="width:100px;height:500px" center="Lima, Peru" }
+
+{exp:freeform:entries orderby="entry_date" form_id="2" sort="desc" dynamic="off" limit="16" }
+	{exp:gmap:marker id="map" address="{freeform:field:direccion}" center="Lima, Peru" }
+{/exp:freeform:entries}

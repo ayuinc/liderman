@@ -1,0 +1,13 @@
+				<div class="row titulo-ultimas-noticias">
+			    <div class="small-centered medium-12 large-12 columns">
+						<h4>RECURSOS</h4>
+			    </div>	
+			  </div> 
+				{exp:channel:entries channel="recurso_capacitacion" }
+				<div class="row noticias-fila">
+					<div class="small-12 medium-12 large-8 columns noticias">
+						<h5>{title}</h5>
+						<p><a href="{archivo-recurso-cap}" target="_blank">Descargar ›</a></p>
+					</div>  
+			  </div>
+				{/exp:channel:entries}

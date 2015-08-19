@@ -1,0 +1,50 @@
+
+{if segment_1=='seguridad-ciudadana' AND segment_2!='hecho'}
+	{if logged_in}
+	<div class="row acceso-profile">
+		<div class="small-12 medium-5 medium-centered large-3 large-centered columns">
+			<div class="panel">
+			{exp:user:register
+			    return="reporte-un-hecho/index"
+			    group_id="5" 
+			}
+			{if no_results}
+				<p class="text-center">				
+					{exp:user:stats dynamic="off"}
+						Hola, {screen_name}
+					{/exp:user:stats}	
+				</p>			
+				    {exp:user:logout return="seguridad-ciudadana/index"}
+				<p class="text-center"><a href="{url}">Salir →</a></p>
+					{/exp:user:logout}
+				
+			{/if}
+			{/exp:user:register} 
+			</div>		
+		</div>
+	</div>
+	{/if}
+
+{if:else}
+
+	{if logged_in}
+	<div class="row acceso-profile">
+		<div class="small-12 medium-5 medium-centered large-3 large-centered columns">
+			<div class="panel">
+				<p class="text-center">		
+					{exp:user:stats dynamic="off"}
+						Hola, {screen_name}
+					{/exp:user:stats}	
+				</p>			
+				    {exp:user:logout return="seguridad-ciudadana/index"}
+				<ul class="inline-list menu-salir">
+					<li><a href="/seguridad-ciudadana"><div class="icon-stack"> Reportes</div></a></li>
+					<li><a href="{url}">Salir →</a></li>
+				</ul>
+					{/exp:user:logout}
+			</div>		
+		</div>
+	</div>
+	{/if}
+	
+{/if}

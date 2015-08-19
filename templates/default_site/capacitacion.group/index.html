@@ -1,0 +1,101 @@
+{exp:channel:entries channel="capacitacion" disable="categories|categories_fields|member_data|pagination"}
+
+{embed="includes/header" descripcion="{introduccion_programa}" titulo="{title}" share-tw="{cuenta_de_twitter_programa}" url-nombre="{url_title}" imagen-conductor="{image:url:medium}"}
+
+{if logged_in}
+<div class="row contenido">
+	<div class="small-12 medium-5 large-5 columns contenido-izquierdo">
+		<div class="panel">
+			<div class="show-for-large-up">
+			{embed="includes/player_capacitacion" id_programa="{streaming-programa}"}
+			</div>
+			<div class="row lateral-margenes-bajo show-for-medium-down">
+				<div class="small-12 medium-12 large-12 columns">
+					<div class="row">
+						<div class="small-12 medium-12 large-12 columns">
+							<h2>Escúchanos</h2>
+							<p>Selecciona uno de las opciones de la lista y participa de nuestra programación.</p>
+						</div>
+						<div class="small-12 medium-12 large-12 columns">
+							<a href="rtsp://67.212.178.250/wkv_radiourbe/myStream" class="button expand">Android</a>
+						</div>
+						<div class="small-12 medium-12 large-12 columns">	
+							<a href="http://67.212.178.250:1935/wkv_radiourbe/myStream/playlist.m3u8" class="button expand">iPhone</a>
+						</div>
+						<div class="small-12 medium-12 large-12 columns">
+							<a href="http://67.212.178.250:1935/wkv_radiourbe/myStream/playlist.m3u8"  class="button expand">iPad</a>
+						</div>
+						<div class="small-12 medium-12 large-12 columns">
+							<a href="rtsp://67.212.178.250/wkv_radiourbe/myStream" class="button expand">Blackberry</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="show-for-medium-up">
+				{embed="includes/recursos-capacitacion"}
+			</div>	
+		</div>
+	</div>	
+	<div class="small-12 medium-7 large-7 columns contenido-derecho">
+		<div class="panel">
+			
+			<div class="row">
+				<div class="small-12 medium-12 large-12 columns">
+					<p><a href="{path='LOGOUT'}">Salir</a></p>
+					<h3>{title}</h3>
+					<h5>{nombre_programa}</h5>					
+					{contenido_programa}
+				</div>				
+			</div>
+			<div class="row">
+				<div class="small-12 medium-12 large-12 columns">
+					<h3 class="rojo-con-linea">COMENTA EN VIVO</h3>
+					<div id="disqus_thread"></div>
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>
+{/if}
+
+{if logged_out}
+<div class="row contenido">	
+	<div class="small-12 medium-4 medium-centered large-4 large-centered columns">
+		<div class="panel">
+	    <div class="row">
+	    	<div class="small-12 medium-12 large-12 columns">
+	    		<h3>Capacitacion</h3>
+	    	</div>							    
+		{exp:member:login_form return="{site_url}capacitacion/index" name="capacitacion"}
+	    	<div class="small-12 medium-12 large-12 columns">
+				<lable>Username</lable>
+	    		<input type="text" name="username" value="">
+	    	</div>	
+	    	<div class="small-12 medium-12 large-12 columns">
+	    		<lable>Contraseña</lable>
+	    		<input type="password" name="password" value="">
+	    	</div>	
+	    	<div class="small-12 medium-12 large-12 columns">
+	    		<p><a  onclick="password_on()">¿Olvidaste tu Contraseña?</a>
+	        {if auto_login}
+	        	<br><small><input type="checkbox" name="auto_login" value="1"> Recuerdame</small>
+	        {/if}
+	        	</p>
+	        </div>
+	        <div class="small-12 medium-12 large-12 columns">
+	        	<p><input type="submit" name="submit" value="INGRESAR" class="button expand"></p>
+	        </div>
+	        <div class="small-12 medium-12 large-12 columns">
+	        	<p>¿No tienes cuenta? <a onclick="registrate()">regístrate</a>.</p>
+	        </div>							        
+		{/exp:member:login_form}					    					    						    	
+	    </div>
+		</div>
+	</div>
+</div>
+{/if}
+{/exp:channel:entries}
+
+
+
+{embed="includes/footer"}

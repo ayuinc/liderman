@@ -2,7 +2,8 @@
 {embed="includes/header" descripcion="{subtitulo-eres-pagina}" titulo="{title}"}
 
 <div class="row contenido">
-	<div class="small-12 medium-5 large-5 columns contenido-izquierdo">
+	<div class="small-12 medium-5 large-5 columns contenido-izquierdo show-for-large-up">
+		<div class="panel">
 		{imagen-eres-pagina}
 			<img src="{image:url:medium}">
 		{/imagen-eres-pagina}
@@ -10,14 +11,23 @@
 		{embed="includes/share-buttons"}	
 		
 		<p>{direccion-eres-pagina}</p>
-		
+		</div>
 	</div>	
-	<div class="small-12 medium-7 large-7 columns contenido-derecho">
+	<div class="small-12 medium-12 large-7 columns contenido-derecho">
 		<div class="panel contenido-panel-derecho">
+
+			<div class="show-for-medium-only">
+			{embed="includes/share-buttons"}			
+			</div>
+			
 			<h2>{title}</h2>
 			<h3>{subtitulo-eres-pagina}</h3>
 			
 			{contenido-eres-pagina}
+			
+			<div class="show-for-medium-only">	
+			<p>{direccion-eres-pagina}</p>			
+			</div>
 			
 			<br>
 			<h3>PREGÚNTALE A LIDERMAN</h3>

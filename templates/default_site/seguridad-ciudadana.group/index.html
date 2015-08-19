@@ -1,0 +1,237 @@
+{embed="includes/header" descripcion="{homepage_quienes_somos_pagina}" titulo="Seguridad Ciudadana"}
+{embed="includes/perfil-logout"}
+
+<div class="row contenido-titulo-reporte-hecho {if logged_out} imagen-reporte-hecho {/if}">
+	<div class="small-12 medium-10 medium-centered large-6 large-centered columns">
+	
+		{if segment_2=='flag'}
+			<div class="procesado">
+				<div class="row">
+					<div class="small-8 small-centered medium-3 medium-centered large-3 large-centered columns">
+						<img src="http://radiourbe.pe/images/basic_images/Liderman_Logotipo_cs_col_pos.png">
+					</div>
+				</div>	
+				<h3 class="text-center">Te agradece por reportar</h3>
+				<p class="text-center">Estás contribuyendo a hacer esta ciudad más segura</p>
+				{exp:user:stats}
+				
+				<div class="row">
+					<div class="small-10 small-centered medium-6 medium-centered large-5 large-centered columns">
+							<h6 class="text-center">COMPÁRTELO</h6>
+							<!-- AddThis Button BEGIN -->
+							<div class="addthis_toolbox addthis_default_style addthis_32x32_style show-for-medium-up" style="margin-left:3rem;"
+								addthis:url="{exp:share_hecho:resultado id_miembro='{member_id}'}"
+							    addthis:title="HAGAMOS DE LIMA UNA CIUDAD SEGURA - Cuéntanos qué pasa en tu distrito reportando un hecho."
+								addthis:description="{screen_name} reportó un Hecho"
+							>
+							<a class="addthis_button_preferred_1"></a>
+							<a class="addthis_button_preferred_2"></a>
+							<a class="addthis_button_preferred_3"></a>
+							<a class="addthis_button_preferred_4"></a>
+							<a class="addthis_button_compact"></a>
+							<a class="addthis_counter addthis_bubble_style"></a>
+							</div>
+							<!-- AddThis Button END -->
+							
+							<div class="addthis_toolbox addthis_default_style addthis_16x16_style show-for-small-only" style="margin-left:3rem;"
+								addthis:url="{exp:share_hecho:resultado id_miembro='{member_id}'}"
+							    addthis:title="HAGAMOS DE LIMA UNA CIUDAD SEGURA - Cuéntanos qué pasa en tu distrito reportando un hecho."
+								addthis:description="{screen_name} reportó un Hecho"
+							>
+							<a class="addthis_button_preferred_1"></a>
+							<a class="addthis_button_preferred_2"></a>
+							<a class="addthis_button_preferred_3"></a>
+							<a class="addthis_button_preferred_4"></a>
+							<a class="addthis_button_compact"></a>
+							<a class="addthis_counter addthis_bubble_style"></a>
+							</div>
+							<!-- AddThis Button END -->								
+					</div>
+				</div>
+							
+				{/exp:user:stats}
+				<p class="text-center"><a onclick="reporte_nuevo()">Reportar otro hecho</a></p>
+				<div class="icon-arrow-down center"></div>
+			</div>
+		
+		{if:else}
+				<h2 class="text-center">¿LA INSEGURIDAD CIUDADANA<br> TE AFECTA?</h2>
+				<h3 class="text-center">¡HAZ ALGO AL RESPECTO!</h3>
+				<p class="text-center">Regístrate, reporta un hecho de inseguridad ciudadana y ayúdanos a enfrentar este grave problema.</p>
+		{/if}
+	</div>
+	
+	{if logged_out}
+	<div class="small-10 small-centered medium-4 medium-centered large-3 large-centered columns">
+		<a href="#" class="button expand" data-reveal-id="ModalRegistro">REGÍSTRATE</a>
+	</div>
+	{/if}
+	
+	<div class="small-12 small-centered medium-8 medium-centered large-8 large-centered columns" {if segment_2=='flag'}id="reportar_de_nuevo" style="display:none;"{/if}>
+		{embed="includes/form-reporte-un-hecho"}
+		{if logged_out}
+		<div class="icon-arrow-down center"></div>
+		{/if}
+	</div>
+</div>
+
+<!--SOLO PARA TABLEST Y DESKTOPS-->
+<div class="row contenido show-for-medium-up">
+	<div class="small-12 medium-12 large-12 columns">
+		<div class="row">
+			<div class="small-12 medium-10 medium-centered large-7 large-centered columns">
+				<div class="panel" id="escoder-mapa">
+					<h5 class="text-center">Filtrar los hechos</h5>
+					<ul class="inline-list">
+						<li><a onclick="todos()" class="activo" id="todos-boton">Todos</a></li>
+						<li><a onclick="robo()" id="robo-boton">Robo</a></li>
+						<li><a onclick="accidente_vial()" id="accidente-vial-boton">Accidente Vial</a></li>
+						<!--<li><a onclick="incendios()" id="incendios-boton">Incendio</a></li>-->
+						<!--<li><a onclick="violencia_calle()" id="violencia-calle-boton">Violencia en la Calle</a></li>-->
+						<li><a onclick="violencia_domestica()" id="violencia-domestica-boton">Violencia Domestica</a></li>
+						<!--<li><a onclick="sospechoso()" id="sospechoso-boton">Sospechoso</a></li>-->
+						<li><a onclick="acoso()" id="acoso-boton">Acoso Callejero</a></li>
+						<li><a onclick="otros()" id="otros-boton">Otros</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--END. SOLO PARA TABLEST Y DESKTOPS-->
+
+<!--SOLO PARA MOVILES-->
+<div class="row contenido contenido-movil show-for-small-only">
+	<div class="small-12 medium-12 large-12 columns">
+		<div class="panel">
+			<div class="row">
+				<div class="small-12 medium-10 medium-centered large-10 large-centered columns">
+					<h5>Filtrar por hechos</h5>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-6 columns">	
+					<p>
+						<a onclick="todos()" class="activo" id="todos-boton">Todos</a><br>
+						<a onclick="robo()" id="robo-boton">Robo</a><br>
+						<a onclick="accidente_vial()" id="accidente-vial-boton">Accidente Vial</a><br>
+						<a onclick="violencia_domestica()" id="violencia-domestica-boton">Violencia Domestica</a>
+						<!--<a onclick="incendios()" id="incendios-boton">Incendio</a><br>
+						<a onclick="violencia_calle()" id="violencia-calle-boton">Violencia en la Calle</a>-->
+					</p>
+				</div>			
+				<div class="small-6 columns">		
+					<p>				
+						<!--<a onclick="violencia_calle()" id="violencia-calle-boton">Violencia en la Calle</a><br>-->
+						<!--<a onclick="sospechoso()" id="sospechoso-boton">Sospechoso</a><br>-->
+						<a onclick="acoso()" id="acoso-boton">Acoso Callejero</a><br>
+						<a onclick="otros()" id="otros-boton">Otros</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+<!--END. SOLO PARA MOVILES-->
+
+<div class="row contenido">	
+	<div class="small-5 medium-12 large-6 large-centered columns show-for-medium-up">
+		<div class="row">
+			<div class="small-3 small-centered medium-2 medium-centered large-4 large-centered columns">
+				<ul class="inline-list reporte-mapa">
+					<li><a onclick="modulo_reporte()" id="modulos-reporte-boton" class="activo"> <div class="icon-stack"> Reportes</div></a></li>
+					<li><a onclick="modulo_mapa()" id="modulos-mapa-boton"><div class="icon-location"> Mapa</div></a></li>
+				</ul>
+			</div>			
+		</div>
+	</div>	
+	
+	<div class="small-12 medium-12 large-12 columns" id="modulos-reporte">	
+			<div class="row contenido-reporte-hecho">
+			{exp:freeform:entries
+			    orderby="entry_date"
+			    form_id="2"
+			    sort="desc"
+			    dynamic="off"
+			    limit="16"
+			    paginate="bottom"
+			}
+				<div class="small-12 medium-6 large-3 columns end 
+				{if freeform:field:tipo_de_hecho=='Robo'}
+					clase-robo
+				{/if}
+				{if freeform:field:tipo_de_hecho=='Accidente Vial'}
+					clase-accidente-vial
+				{/if}
+				{if freeform:field:tipo_de_hecho=='Incendios'}
+					clase-incendios
+				{/if}	
+				{if freeform:field:tipo_de_hecho=='Violencia en la Calle'}
+					clase-violencia-calle
+				{/if}	
+				{if freeform:field:tipo_de_hecho=='Violencia Domestica'}
+					clase-violencia-domestica
+				{/if}	
+				{if freeform:field:tipo_de_hecho=='Sospechoso'}
+					clase-sospechoso
+				{/if}
+				{if freeform:field:tipo_de_hecho=='Otros'}
+					clase-otros
+				{/if}
+				{if freeform:field:tipo_de_hecho=='Acoso Callejero'}
+					clase-acoso-callejero
+				{/if}						
+				"																						
+				>
+					<div class="panel">
+					{if freeform:field:imagen_del_hecho}
+						<img src="{site_url}images/red-seguridad/{freeform:field:imagen_del_hecho}" alt="{freeform:field:tipo_de_hecho}">
+					{if:else}
+						<img src="http://dummyimage.com/600x400/E0158D/FFF.jpg&text=Hecho+reportado">								
+					{/if}
+				    	<h5>{freeform:field:tipo_de_hecho}</h5><br>
+				    	<!--<p>Reportado por {freeform:author}</p>-->
+				    	<small>{freeform:entry_date format="%F %j, %Y a las %g:%i %a"}<br>{freeform:field:direccion}</small>
+				    	{exp:char_limit total="120" exact="no"}
+				    	<p>{freeform:field:descripcion}</p>
+				    	{/exp:char_limit}
+				    	{if logged_in}
+						<p class="text-right"><a href="{site_url}seguridad-ciudadana/hecho/{freeform:entry_id}">COMENTAR ›</a></p>
+						{/if}
+						{if logged_out}
+						 <p class="text-right"><a href="#" data-reveal-id="myModal">COMENTAR ›</a></p>
+						{/if}
+					</div>
+				</div>
+				
+				{if freeform:total_pages > 1}
+				    {freeform:paginate}
+					<div class="small-12 medium-12 large-12 columns end">
+						<p class="text-center">
+						Página {freeform:current_page}
+					    de {freeform:total_pages}
+					    páginas &nbsp;
+					    {freeform:pagination_links}
+						</p>
+					</div>
+				    {/freeform:paginate}
+				{/if} 
+				
+			{/exp:freeform:entries}
+			</div>
+	</div>	
+</div>
+
+<div class="row contenido">	
+	<div class="small-12 medium-8 medium-centered large-10 large-centered columns" id="modulos-mapa" style="display:none;">
+		<div class="show-for-large-up">
+		<iframe src="{site_url}seguridad-ciudadana/mapa" scrolling="no" width="100%" height="500" seamless="seamless" frameborder="0"></iframe>
+		</div>
+		<div class="show-for-medium-only">
+		<iframe src="{site_url}seguridad-ciudadana/mapa" scrolling="no" width="500" height="500" seamless="seamless" frameborder="0"></iframe>
+		</div>		
+	</div>
+	
+</div>
+
+{embed="includes/footer"}

@@ -2,7 +2,7 @@
 {embed="includes/header"}
 
 <div class="row todo-noticias">
-	<div class="small-centered medium-8 large-8 columns">
+	<div class="small-centered medium-10 large-8 columns">
 	  	    <div class="small-centered medium-12 large-12 columns clearfix">
 	  			<h3 class="text-center">
 		  			<img src="{site_url}images/basic_images/icono-noticias-radio-urbe.png"  class="icono"><br>
@@ -11,7 +11,7 @@
 	  	    </div>	
 	  		{exp:channel:entries channel="noticias" disable="member_data" orderby="date" sort="DESC" limit="10"}	  		
 		  	<div class="row imagen-noticias">
-			  	<div class="small-12 medium-3 large-3 columns clearfix margen-bajo">
+			  	<div class="small-12 medium-4 large-3 columns clearfix margen-bajo">
 				{if video-noticia}
 				
 					<a href="{site_url}noticias/articulo/{url_title}"><img src="http://img.youtube.com/vi/{video-noticia}/0.jpg" width="100%"></a>
@@ -22,8 +22,8 @@
 					{/imagen-noticia}
 				{/if}
 			  	</div>
-			  	<div class="small-12 medium-9 large-9 columns noticias">
-			  		<h5><a href="{site_url}noticias/articulo/{url_title}">{title}</a></h5>
+			  	<div class="small-12 medium-8 large-9 columns noticias">
+			  		<a href="{site_url}noticias/articulo/{url_title}"><h5>{title}</h5></a>
 			  		<p>{if descripcion-noticia}{descripcion-noticia}<br>{/if}<a href="{site_url}noticias/articulo/{url_title}">Leer más ›</a></p>
 			  	</div>  
 		  	</div>

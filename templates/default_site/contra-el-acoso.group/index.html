@@ -1,0 +1,63 @@
+{embed="includes/header-contra-el-acoso"} 
+		<section>
+			<div class="row">
+			  <div class="small-12 columns">
+			  	<div class="content content-top">
+				  	<h1 class="title">hay gente que ya lo reconoció</h1>
+				  	<ul class="statistics first row">
+				  		<li class="item small-12 medium-4 columns">
+				  			{exp:freeform:entries form_id="3" limit="1" search:motivo="Violencia Física" }
+				  			<div class="circle"><span>{freeform:absolute_results}</span></div>
+				  			{/exp:freeform:entries} 
+				  			<div class="circle-text">violencia fisica</div></li>
+				  		<li class="item small-12 medium-4 columns">
+				  			{exp:freeform:entries form_id="3" limit="1" search:motivo="Violencia Psicológica" }
+				  			<div class="circle"><span>{freeform:absolute_results}</span></div>
+				  			{/exp:freeform:entries} 
+				  			<div class="circle-text">Violencia Psicológica</div></li>
+				  		<li class="item small-12 medium-4 columns">
+				  			{exp:freeform:entries form_id="3" limit="1" search:motivo="Abuso Sexual" }
+				  			<div class="circle"><span>{freeform:absolute_results}</span></div>
+				  			{/exp:freeform:entries} 
+				  			<div class="circle-text">abuso sexual</div></li>
+				  	</ul>
+			  	</div>
+			  	<div class="content content-bottom">
+				  	<ul class="statistics second row">
+				  		<li class="item small-4 columns">
+				  			<div class="text_left">casos segun el tipo de agresor</div>
+				  		</li>
+				  		<li class="item small-8 columns">
+				  			{exp:freeform:entries form_id="3" limit="1"}
+				  				<?php $full_count = {freeform:absolute_results}; ?>
+				  			{/exp:freeform:entries}
+				  			<ul class="text_right">
+				  				<li>
+				  					{exp:freeform:entries form_id="3" limit="1" search:agresor="Conyuge/Conviviente"}
+				  					<?php $absolute_count = {freeform:absolute_results}; ?>
+				  					<span class="orange"><?php echo round(($absolute_count*100)/$full_count); ?>%</span>
+				  					{/exp:freeform:entries}
+				  					<span class='text-stats'>Entre conyuge/conviviente</span>
+				  				</li>
+				  				<li>
+					  				{exp:freeform:entries form_id="3" limit="1" search:agresor="Padre/Madre"}
+				  					<?php $absolute_count = {freeform:absolute_results}; ?>
+				  					<span class="orange"><?php echo round(($absolute_count*100)/$full_count); ?>%</span>
+				  					{/exp:freeform:entries}
+				  					<span class='text-stats'>Entre Padre/Madre</span>
+				  				</li>
+				  				<li>
+					  				{exp:freeform:entries form_id="3" limit="1" search:agresor="Exconyuge/Exconviviente"}
+				  					<?php $absolute_count = {freeform:absolute_results}; ?>
+				  					<span class="orange"><?php echo round(($absolute_count*100)/$full_count); ?>%</span>
+				  					{/exp:freeform:entries}
+				  					<span class='text-stats'>Entre Exconyuge/Exconviviente</span>
+				  				</li>
+				  			</ul>
+				  		</li>
+				  	</ul>
+			  	</div>
+			  </div>
+			</div>
+		</section>
+{embed="includes/footer-contra-el-acoso"} 

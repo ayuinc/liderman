@@ -1,33 +1,31 @@
 			<div class="row titulo-ultimas-noticias">
 		  	    <div class="small-centered medium-12 large-12 columns">
-		  			<h4>ARCHIVOS</h4>
+		  			<h4>NOTICIAS</h4>
 		  	    </div>	
 		  	</div> 
 		  	    
 			{exp:channel:entries channel="noticias" disable="member_data|pagination" dynamic="off" limit="3" orderby="date" sort="DESC" limit="3" category="{last_segment_category_id}"}
 			{embed:categoria-programa}
-			<div class="row">
-				<div class="small-12 medium-4 large-4 columns margen-bajo">
+			<div class="row noticias-fila">
+				<div class="small-12 medium-12 large-4 columns margen-bajo">
 				{if video-noticia}
-				
 					<a href="{site_url}noticias/articulo/{url_title}"><img src="http://img.youtube.com/vi/{video-noticia}/1.jpg"></a>
-				
 				{if:else}
 					{imagen-noticia limit="1"}
 					<a href="{site_url}noticias/articulo/{url_title}"><img src="{image:url:small}"></a>
 					{/imagen-noticia}
 				{/if}	
 				</div>
-				<div class="small-12 medium-8 large-8 columns noticias">
+				<div class="small-12 medium-12 large-8 columns noticias">
 					<h5>{title}</h5>
 					<p>{if descripcion-noticia}{descripcion-noticia} <br>{/if}<a href="{site_url}noticias/articulo/{url_title}">Leer más ›</a></p>
 				</div>  
-				<div class="articulo-ultimas-noticias"><p><hr></p></div>
+				<div class=""></div>
 		    </div>
 			{/exp:channel:entries}	
 		  	
-		  	<div class="row">   
+		  	<div class="row articulo-ultimas-noticias">   
 			  	<div class="small-centered medium-12 large-12 columns">
-			  		<p class="text-center"><a href="{site_url}noticias/categoria/{last_segment}">Leer todos los archivos de este programa »</a></p>
+			  		<a href="{site_url}noticias/categoria/{last_segment}" class="">Más Noticias ›</a>
 			  	</div> 
 		  	</div>

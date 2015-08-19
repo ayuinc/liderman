@@ -1,2 +1,9 @@
-<iframe width="480" height="302" src="http://www.ustream.tv/embed/17157483?v=3&amp;wmode=direct" scrolling="no" frameborder="0" style="border: 0px none transparent;">    </iframe>
-<br /><a href="http://www.ustream.tv/" style="padding: 2px 0px 4px; width: 400px; background: #ffffff; display: block; color: #000000; font-weight: normal; font-size: 10px; text-decoration: underline; text-align: center;" target="_blank">Live streaming video by Ustream</a>
+{exp:user:register form_name="register_form" form_id="register_form" required="username|password|password_confirm" group_id="5" admin_register="yes"}
+<form id="register_form" method="post">
+    <p><label for="firstname">Name</label><input type="text" id="firstname" name="firstname" class="firstname" value="first name" /><input type="text" name="lastname" class="lastname required" value="last name" /></p>
+    <p><label for="username">Email</label><input type="text" name="username" id="username" class="email required" /></p>
+    <p><label for="password">Password</label><input type="password" name="password" id="password" class="required" /><span>Must be 5 characters or more</span></p>
+    <p><label for="password_confirm">Confirm password</label><input type="password" name="password_confirm" id="password_confirm" class="required" /></p>
+    <p class="button"><button type="submit">Submit</button></p>
+</form>
+{/exp:user:register}

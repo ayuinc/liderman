@@ -2,7 +2,7 @@
 {embed="includes/header" descripcion="Conoce la programación de RadioUrbe" titulo="Programación"}
 
 <div class="row contenido">	
-	<div class="small-12 medium-5 large-5 columns contenido-izquierdo">
+	<div class="small-12 medium-12 large-5 columns contenido-izquierdo show-for-large-up">
 		<div class="panel">
 			{exp:channel:entries channel="pagina_programacion" disable="categories|member_data|pagination" dynamic="off" }
 				{imagen-eres-pagina}
@@ -14,282 +14,25 @@
 		</div>
 	</div>	
 	
-	<div class="small-12 medium-7 large-7 columns contenido-derecho">
+	<div class="small-12 medium-12 large-7 columns contenido-derecho">
 		<div class="panel">
+		
+			<div class="show-for-medium-only">
+			{embed="includes/share-buttons"}			
+			</div>		
+		
 			<h2>Programación</h2>
 			<p>Conoce la programación de RadioUrbe</p><br>
 			
 			
 			{exp:channel:entries channel="programacion" disable="categories|member_data|pagination" dynamic="off" entry_id="not 39" }
 			<div class="pag-programacion">
-				<h4><a href="{site_url}/programacion/conductor/{url_title}">{title}</a></h4>
-				<span>{nombre_programa} | <i>{horario-programa}</i></span>
+				<h4><a href="{site_url}programacion/conductor/{url_title}">{title}</a></h4>
+				<span>{nombre_programa}<br><i>{horario-programa}</i></span>
 				<p>{introduccion_programa}</p>
 			</div>	
 			{/exp:channel:entries}
-			
-			
-			
-			<!--
-			<table>
-			  <thead>
-			    <tr>
-			      <th>HORA</th>
-			      <th>LUNES</th>
-			      <th>MARTES</th>
-			      <th>MIÉRCOLES</th>
-			      <th>JUEVES</th>
-			      <th>VIERNES</th>
-			      <th>SÁBADO</th>
-			      <th>DOMINGO</th>			      
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <td>1 am</td>
-			      <td class="gray-musica">Música</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica-fiesta">Música de Fiesta</td>
-			      <td class="gray-musica-fiesta"> </td>			      
-			    </tr>
-			    <tr>
-			      <td>2 am</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica-fiesta"> </td>
-			      <td class="gray-musica-fiesta"> </td>			      
-			    </tr>
-			    <tr>
-			      <td>3 am</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica-fiesta"> </td>
-			      <td class="gray-musica-fiesta"> </td>		      
-			    </tr>
-			    <tr>
-			      <td>4 am</td>
-			      <td class="gray-liderman">Liderman</td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-musica-fiesta"> </td>
-			      <td class="gray-musica-fiesta"> </td>		      
-			    </tr>	
-			    <tr>
-			      <td>5 am</td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-musica-fiesta"> </td>
-			      <td class="gray-musica-fiesta"> </td>		      
-			    </tr>
-			    <tr>
-			      <td>6 am</td>
-			      <td class="gray-musica">Música</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-clasicos-desayuno">Clásicos del Desayuno</td>
-			      <td class="gray-clasicos-desayuno"> </td>			      
-			    </tr>
-			    <tr>
-			      <td>7 am</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-clasicos-desayuno"> </td>
-			      <td class="gray-clasicos-desayuno"> </td>		      
-			    </tr>	
-			    <tr>
-			      <td>8 am</td>
-			      <td class="gray-noticieros">Noticiero</td>
-			      <td class="gray-noticieros"> </td>
-			      <td class="gray-noticieros"> </td>
-			      <td class="gray-noticieros"> </td>
-			      <td class="gray-noticieros"> </td>
-			      <td class="gray-clasicos-desayuno"> </td>
-			      <td class="gray-clasicos-desayuno"> </td>	      
-			    </tr>
-			    <tr>
-			      <td>9 am</td>
-			      <td class="gray-musica">Música</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>		      
-			    </tr>
-			    <tr>
-			      <td>10 am</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>			      
-			    </tr>	
-			    <tr>
-			      <td>11 am</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>			      
-			    </tr>
-			    <tr>
-			      <td>12 am</td>
-			      <td class="gray-pop-rock">Pop, Rock Peruano</td>
-			      <td class="gray-pop-rock"> </td>
-			      <td class="gray-pop-rock"> </td>
-			      <td class="gray-pop-rock"> </td>
-			      <td class="gray-pop-rock"> </td>
-			      <td class="gray-liderman">Liderman</td>
-			      <td class="gray-liderman"> </td>			      
-			    </tr>
-			    <tr>
-			      <td>1 pm</td>
-			      <td class="gray-espinsomnio">Espacio Insomnio </td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>			      
-			    </tr>	
-			    <tr>
-			      <td>2 pm</td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-musica">Música</td>
-			      <td class="gray-musica"> </td>		      
-			    </tr>
-			    <tr>
-			      <td>3 pm</td>
-			      <td class="gray-espinsomnio"></td>
-			      <td class="gray-espinsomnio"></td>
-			      <td class="gray-espinsomnio"> </td>
-			      <td class="gray-espinsomnio"></td>
-			      <td class="gray-espinsomnio"></td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>		      
-			    </tr>
-			    <tr>
-			      <td>4 pm</td>
-			      <td class="gray-sonido-campeon">Sonido Campeón</td>
-			      <td class="gray-y-ahora">¿Y ahora que hago?</td>
-			      <td class="gray-y-ahora"></td>
-			      <td>3x3</td>
-			      <td class="gray-sonido-campeon">Sonido Campeón</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>		      
-			    </tr>	
-			    <tr>
-			      <td>5 pm</td>
-			      <td class="gray-sonido-campeon"> </td>
-			      <td>Tecnourbe</td>
-			      <td class="gray-musica">Música</td>
-			      <td> </td>
-			      <td class="gray-sonido-campeon"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>			      
-			    </tr>
-			    <tr>
-			      <td>6 pm</td>
-			      <td class="gray-mundo-cine">Mundo Cine</td>
-			      <td class="gray-familia-liderman">Familia Liderman</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-familia-liderman">Familia Liderman</td>
-			      <td>Agenda Weekend</td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>		      
-			    </tr>	
-			    <tr>
-			      <td>7 pm</td>
-			      <td class="gray-mundo-cine"> </td>
-			      <td class="gray-familia-liderman"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-familia-liderman"> </td>
-			      <td> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-musica"> </td>		      
-			    </tr>
-			    <tr>
-			      <td>8 pm</td>
-			      <td class="gray-liderman">Liderman</td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-liderman">Liderman</td>			      
-			    </tr>	
-			    <tr>
-			      <td>9 pm</td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-liderman"> </td>
-			      <td class="gray-musica"> </td>
-			      <td class="gray-liderman"> </td>				      
-			    </tr>
-			    <tr>
-			      <td>10 pm</td>
-			      <td class="gray-salsa">Salsa Clásica</td>
-			      <td class="gray-urbe-tabu">Urbe Tabú</td>
-			      <td class="gray-salsa">Salsa Clásica</td>
-			      <td class="gray-urbe-tabu">Urbe Tabú</td>
-			      <td class="gray-salsa">Salsa Clásica</td>
-			      <td class="gray-salsa">Salsa Clásica</td>
-			      <td class="gray-y-ahora">¿Y ahora que hago?</td>		      
-			    </tr>
-			    <tr>
-			      <td>11 pm</td>
-			      <td class="gray-salsa"> </td>
-			      <td class="gray-urbe-tabu"> </td>
-			      <td class="gray-salsa"> </td>
-			      <td class="gray-urbe-tabu"> </td>
-			      <td class="gray-salsa"> </td>
-			      <td class="gray-salsa"> </td>
-			      <td class="gray-y-ahora"> </td>			      
-			    </tr>	
-			    <tr>
-			      <td>12 pm</td>
-			      <td class="gray-salsa"> </td>
-			      <td class="gray-urbe-tabu"> </td>
-			      <td class="gray-salsa"> </td>
-			      <td class="gray-urbe-tabu"> </td>
-			      <td class="gray-salsa"> </td>
-			      <td class="gray-salsa"> </td>
-			      <td class="gray-y-ahora"> </td>			      
-			    </tr>				    
-			    <div></div>			    			    			    			    		    			    
-			  </tbody>
-			</table>
-			-->
-			
+						
 		</div>
 	</div>		
 </div>

@@ -1,0 +1,113 @@
+
+{exp:comment:form entry_id="2"  form_id="form-arriba" }
+
+        {if logged_out}
+        {embed="includes/form-ingresar-sistema-comments"}
+        {embed="includes/form-registrar-sistema-comments"}       
+        {/if}
+
+
+		{if logged_in}
+		<div class="row acceso-perfil-site">
+			<div class="small-12 medium-12 large-12 columns">	
+				<p>		
+					{exp:user:stats dynamic="off"}
+						Hola, {screen_name}!
+					{/exp:user:stats}		
+					{exp:user:logout return="{current_url}"}
+					<a href="{url}" class="right">salir →</a>
+					{/exp:user:logout}
+				</p>		
+			</div>
+		</div>
+        <textarea name="comment" cols="70" rows="10" placeholder="Únete a la discusión">{comment}</textarea>
+        <input type="hidden" name="save_info" value="yes" {save_info} />
+        <input type="hidden" name="notify_me" value="yes" {notify_me} />
+
+        {if captcha}
+                <label for="captcha">Please enter the word you see in the image below:</label><br />
+                <p>{captcha}<br />
+                <input type="text" name="captcha" value="{captcha_word}" maxlength="20" /></p>
+        {/if}
+
+        <input type="submit" name="submit" value="POSTEAR UN COMENTARIO" class="button" />
+        <!--<input type="submit" name="preview" value="Preview" />-->
+		{/if}
+
+{/exp:comment:form}
+
+
+
+{exp:threaded_comments:form entry_id="{last_segment}" parent_id="{segment_4}"}
+
+
+
+		{if logged_in}
+	        <textarea name="comment" cols="70" rows="10" placeholder="Responde">{comment}</textarea>
+	        <input type="hidden" name="save_info" value="yes" {save_info} />
+	        <input type="hidden" name="notify_me" value="yes" {notify_me} />
+	
+	        {if captcha}
+	                <label for="captcha">Please enter the word you see in the image below:</label><br />
+	                <p>{captcha}<br />
+	                <input type="text" name="captcha" value="{captcha_word}" maxlength="20" /></p>
+	        {/if}
+	
+	        <input type="submit" name="submit" value="POSTEAR UN RESPUESTA" class="button" />
+		{/if}
+		
+{/exp:threaded_comments:form}
+
+
+<br>
+<h5>ÚLTIMOS COMENTARIOS</h5>	
+
+{exp:threaded_comments:display}
+<ul class="comentarios-entries">
+{comments}
+	{thread_start}
+	<ul class="comentarios-respuestas">
+	{/thread_start}
+	<li>
+		<div class="comment-text">
+		<h6>{url_as_author}</h6>{comment}
+		</div>
+		<small>
+			Publicado el {comment_date format="%d-%m-%Y"} | <a href="javascript:void(0)" class="reply" rel="{comment_id}">Responder a este comentario</a>
+		</small>
+	</li>
+	{thread_end}
+	</ul>
+	{/thread_end}	
+{/comments}
+</ul>
+{/exp:threaded_comments:display}
+
+
+
+{!-- do not forget to include jQuery library --}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+{!-- this code will set proper parent_id and move the form --}
+<style type="text/css">
+/* #comment_form {display: none;}*/
+</style>
+<script type="text/javascript">
+$('#comment_form').hide();
+$(document).ready(function(){
+  $('.reply').click(function() {
+    $('#comment_form input[name=parent_id]').val($(this).attr('rel'));
+    $('#comment_form').insertAfter( // Insert the comment form after...
+    $(this)
+    .parent() // The containing p tag
+    );
+    $('#comment_form').toggle(300);
+  });
+  $('.quote').click(function() {
+    $('#comment_form textarea[name=comment]').val('[quote]'+ 
+    $(this).parent().parent().find('.comment-text').text()+
+    '[/quote]'
+    );
+  });
+});
+</script>

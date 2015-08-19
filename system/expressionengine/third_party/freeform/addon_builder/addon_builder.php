@@ -11,7 +11,7 @@
  * @copyright	Copyright (c) 2008-2014, Solspace, Inc.
  * @link		http://solspace.com/docs/
  * @license		http://www.solspace.com/license_agreement/
- * @version		1.5.4
+ * @version		1.5.7
  * @filesource 	addon_builder/addon_builder.php
  */
 
@@ -36,7 +36,7 @@ class Addon_builder_freeform
 	 *
 	 * @var string
 	 */
-	static $class_version		= '1.5.4';
+	static $class_version		= '1.5.7';
 
 	/**
 	 * Current EE version
@@ -702,10 +702,10 @@ class Addon_builder_freeform
 			'addon_theme_url'			=> $theme_url . $this->lower_name . '/',
 			'addon_theme_path'			=> $theme_path . $this->lower_name . '/',
 			'csrf_name'					=> (
-				version_compare($this->version, '2.8', '>=')
+				version_compare($this->ee_version, '2.8', '>=')
 			) ? 'csrf_token' : 'XID',
 			'csrf_js_name'					=> (
-				version_compare($this->version, '2.8', '>=')
+				version_compare($this->ee_version, '2.8', '>=')
 			) ? 'CSRF_TOKEN' : 'XID',
 		);
 	}
@@ -2916,9 +2916,10 @@ EOT;
 		{
 			return CSRF_TOKEN;
 		}
-		//csrf needs a session to work. Which means if sessions
-		//arent' started yet...
-		else if (isset(ee()->session) && is_object(ee()->session))
+		//csrf needs a session to work.
+		//this is generally only ever hit on ACT
+		//or m=Javascript
+		else if ($this->session_obj_set())
 		{
 			ee()->load->library('csrf');
 			return ee()->csrf->get_user_token();
@@ -4289,7 +4290,7 @@ EOT;
 
 	public function get_session_id()
 	{
-		if ( ! isset(ee()->session) || ! is_object(ee()->session))
+		if ( ! $this->session_obj_set())
 		{
 			$s = 0;
 		}
@@ -4303,13 +4304,25 @@ EOT;
 		{
 			$admin_session_type = ee()->config->item('admin_session_type');
 
-			switch ($admin_session_type)
+			if (
+				$admin_session_type == 's' &&
+				isset(ee()->session->userdata['session_id'])
+			)
 			{
-				case 's' 	: $s = ee()->session->userdata['session_id'];
-					break;
-				case 'cs' 	: $s = ee()->session->userdata['fingerprint'];
-					break;
-				default 	: $s = 0;
+				$s = ee()->session->userdata['session_id'];
+			}
+
+			else if (
+				$admin_session_type == 'cs' &&
+				isset(ee()->session->userdata['fingerprint'])
+			)
+			{
+				$s = ee()->session->userdata['fingerprint'];
+			}
+
+			else
+			{
+				$s = 0;
 			}
 		}
 
@@ -4473,5 +4486,27 @@ EOT;
 		}
 	}
 	//END csrf_enabled
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Session Object Set
+	 *
+	 * @access	public
+	 * @return	boolean		is the dang thing set correctly? >_<
+	 */
+
+	public function session_obj_set()
+	{
+		return (
+			isset(ee()->session) &&
+			is_object(ee()->session) &&
+			//Some buttwipe addons initiate session as stdClass by setting
+			//session->cache before session is instantiated.
+			get_class(ee()->session) != 'stdClass'
+		);
+	}
+	//END session_obj_set
 }
 // END Addon_builder Class

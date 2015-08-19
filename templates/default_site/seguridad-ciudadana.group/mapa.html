@@ -1,0 +1,19 @@
+{exp:gmap:init id="map" class="google-map" style="width:1000px;height:500px;" }
+
+{exp:freeform:entries form_id="2" sort="desc" dynamic="off" }
+	{exp:gmap:marker id="map" address="{freeform:field:direccion}" center="Magdalena, Lima" zoom="10" title="{freeform:field:tipo_de_hecho}" }
+		<div style="width:200px; padding:1rem;">
+			{if freeform:field:imagen_del_hecho}
+				<img src="{site_url}images/red-seguridad/{freeform:field:imagen_del_hecho}" alt="{freeform:field:tipo_de_hecho}" width="200">
+			{if:else}
+				<img src="http://dummyimage.com/200x200/E0158D/FFF.jpg&text=Hecho+reportado">								
+			{/if}		
+			<h3>{freeform:field:tipo_de_hecho}</h3>
+	        <div class="content">
+	        	<p>Reportado por {freeform:author}<br>{freeform:field:direccion}</p>
+	        </div>
+		</div>
+    {/exp:gmap:marker}    
+{/exp:freeform:entries}
+
+{exp:gmap:center id="map" address="Lima Peru"}

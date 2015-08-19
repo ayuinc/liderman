@@ -10,7 +10,7 @@
  * @copyright	Copyright (c) 2008-2014, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.1.6
+ * @version		4.1.8
  * @filesource	freeform/act.freeform.php
  */
 
@@ -147,7 +147,7 @@ class Freeform_acc extends Module_builder_freeform
 											'&method=entries&form_id=' .
 											$form['form_id'];
 			$info['pending_link']		= $this->base .
-											'&method=entries&form_id=' .
+											'&method=moderate_entries&form_id=' .
 											$form['form_id'] .
 											'&search_status=pending';
 			$info['submission_count']	= $this->data

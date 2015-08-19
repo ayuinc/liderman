@@ -1,0 +1,75 @@
+				{if logged_in}
+					<div class="row form-hecho"> 
+						<div class="small-12 medium-12 large-12 columns clearfix">
+						
+							{exp:freeform:form
+							    form_id="2"
+							    return="seguridad-ciudadana/flag"
+							    error_page="seguridad-ciudadana/" 
+							    inline_errors="yes"
+							    inline_error_return="seguridad-ciudadana/"
+							    required="descripcion|direccion" 
+							}
+
+
+								{exp:user:stats}
+								<input type="hidden" value="{screen_name}" name="nombre_denunciante">
+								<input type="hidden" value="{email}" name="email">
+								{/exp:user:stats}
+								
+							    <div class="row">
+							    	<div class="small-12 medium-6 large-6 columns">
+							        	<label>{freeform:label:tipo_de_hecho}</label>
+										{freeform:field:tipo_de_hecho}
+							    	</div>
+							    	<div class="small-12 medium-6 large-6 columns">
+							        	<label>{freeform:label:imagen_del_hecho}</label>
+										{freeform:field:imagen_del_hecho}
+							    	</div>
+							    </div> 							    
+
+							    <div class="row">
+							    	<div class="small-12 medium-6 large-6 columns">
+							        	<label>{freeform:label:descripcion}</label>
+										<input type="text" name="descripcion" placeholder="Una sospechoso está rondando frente a mi casa.">
+							    	</div>
+							    	<div class="small-12 medium-6 large-6 columns">
+							        	<label>{freeform:label:direccion}</label>
+										<input type="text" name="direccion" placeholder="Trinidad Moran 990, Lince Lima">
+										{if freeform:field_errors}
+											{if freeform:error:direccion}
+											<small class="error">Este campo es obligatorio</small>
+											{/if}
+										{/if}										
+							    	</div>
+							    </div>  
+		
+							    {if freeform:captcha}
+							    <div class="row">
+							    	<div class="small-12 medium-12 large-12 columns">					    
+							        <p>Ingrese la palabra que está en la imagen:</p>
+							        <p>{freeform:captcha}<br />
+							        <input type="text" name="captcha" style="width:140px;" /></p>
+							    	</div>
+							    </div> 					        
+							    {/if}
+							    <div class="row">
+							    	<div class="small-12 medium-6 medium-centered large-4 large-centered columns">	
+										<p><input type="submit" value="REPORTAR" class="button expand"></p>
+							    	</div>
+							    </div>
+							    <div class="row">
+							    	<div class="small-12 medium-12 large-12 columns">	
+									    {if freeform:no_results}
+									        <p>
+									            Specified form was not found. Please make sure you have
+									            specified the correct short name of the form in the
+									            <b>form_name</b> parameter.
+									        </p>
+									    {/if}
+							    	</div>
+							    </div>
+							{/exp:freeform:form}
+						</div>
+					</div>
+				{/if}

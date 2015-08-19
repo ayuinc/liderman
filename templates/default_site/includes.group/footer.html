@@ -1,9 +1,9 @@
 <div class="row footer">
 
-  	<div class="small-12 medium-5 large-5 columns">
+  	<div class="small-12 medium-12 large-5 columns">
 	  	<div class="row">
 			<div class="small-12 medium-12 large-12 columns">
-			<ul class="inline-list footer-list">
+			<ul class="inline-list footer-list show-for-large-up">
 				<li><a href="{site_url}/quienes-somos">QUIÉNES SOMOS</a></li>
 			    <li><a href="{site_url}/programacion">PROGRAMACIÓN</a></li>
 			    <li><a href="{site_url}/noticias">NOTICIAS</a></li>
@@ -15,7 +15,7 @@
 		</div>
   	</div>
 
-  	<div class="small-12 medium-4 large-4 columns">	
+  	<div class="small-12 medium-4 large-4 columns show-for-large-up">	
 		<div class="row">
 		<div class="small-12 medium-12 large-12 columns">
 	 	<h4>MOVIMIENTO POR UNA CIUDAD SEGURA</h4>
@@ -35,7 +35,7 @@
 	</div>
   	</div>
 
-  	<div class="small-12 medium-3 large-3 columns">
+  	<div class="small-12 medium-3 large-3 columns show-for-large-up">
   		<div class="row">
 		<div class="small-12 medium-12 large-12 columns">
 		    <h4>SÍGUENOS EN LAS REDES</h4>
@@ -81,7 +81,9 @@
     <script src="{site_url}js/foundation.min.js"></script>
     <script src="{site_url}js/foundation/foundation.topbar.js"></script>
     <script src="{site_url}js/foundation/foundation.magellan.js"></script>
-    
+    {if segment_1=='reporte-un-hechos'}
+		<script src="{site_url}js/foundation/foundation.reveal.js"></script>    
+    {/if}
     <!--Typekit-->
     <script type="text/javascript" src="//use.typekit.net/yfg8sfb.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -92,18 +94,301 @@
 	    <script src="{site_url}js/foundation.orbit.js"></script>
 	    <script>
 	    $(document).ready(function(){ 
-	    $( "#down" ).click(function( event ) { 
-		    event.preventDefault(); 
-		    $("html, body").animate({scrollTop:$("#summary").offset().top}); }); 
-		    $( "#top_register" ).click(function( event ) { event.preventDefault(); 
-		    $("html, body").animate({scrollTop:0}, "slow"); 
+	    	$( "#down" ).click(function( event ) { 
+			    event.preventDefault(); 
+			    $("html, body").animate({scrollTop:$("#summary").offset().top}); }); 
+			    $( "#top_register" ).click(function( event ) { event.preventDefault(); 
+			    $("html, body").animate({scrollTop:0}, "slow"); 
 		    }); 
 	    });
 	    </script>
-    {if:else}
-		<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=hermanmarin"></script>
     {/if}
+    
+    
+    {if segment_1=='seguridad-ciudadana' OR segment_1==''}
+    
+		<!--REVEAL MODAL-->
+		<div id="ModalRegistro" class="reveal-modal" data-reveal>
+			<div class="row">
+				<div class="small-12 medium-12 large-12 columns">
+					<div class="panel">
+						
+						{if logged_out}
+							<div class="row form-login"> 
+								<div class="small-12 medium-12 large-12 columns" id="ingresa-login">
+									{embed="includes/form-ingresar-sistema"}
+								</div>
+			
+								<div class="small-12 medium-12 large-12 columns" id="registrate-login" style="display:none">
+									{embed="includes/form-registrar-sistema"}
+								</div>
+								
+								<div class="small-12 medium-12 large-12 columns" id="password-login" style="display:none">
+									{embed="includes/forgot-password"}
+								</div>						
+							</div>
+							
+						{/if}	
+					</div>
+				</div>		
+			</div>
+		  <a class="close-reveal-modal">&#215;</a>
+		</div>    
+
+		
+
+   <!-- Facebook Conversion Code for Seguridad Ciudadana -->
+	<script>(function() {
+		var _fbq = window._fbq || (window._fbq = []);
+		if (!_fbq.loaded) {
+		var fbds = document.createElement('script');
+		fbds.async = true;
+		fbds.src = '//connect.facebook.net/en_US/fbds.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(fbds, s);
+		_fbq.loaded = true;
+		}
+		})();
+		window._fbq = window._fbq || [];
+		window._fbq.push(['track', '6013570368061', {'value':'0.01','currency':'PEN'}]);
+	</script>
+	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6013570368061&amp;cd[value]=0.01&amp;cd[currency]=PEN&amp;noscript=1" /></noscript>
+
+	<script>
+	$('#audio').hide();
+	$("#btn-ifm1").addClass("boton-activo");
+	$(document).ready(function(){
+    $("#btn-ifm1").click(function(){
+	    $("#btn-ifm1").addClass("boton-activo");
+	    $("#btn-ifm2").removeClass("boton-activo");
+      $("#video").show(10);
+      $("#audio").hide(10);
+    });
+    $("#btn-ifm2").click(function(){
+	    $("#btn-ifm2").addClass("boton-activo");
+	    $("#btn-ifm1").removeClass("boton-activo");
+      $("#audio").show(10);
+      $("#video").hide(10);
+    });    
+	});
+	function registrate() {
+		$('#ingresa-login').fadeOut(5);
+		$('#registrate-login').fadeIn(500);
+	}
+	function registrate_off() {
+		$('#registrate-login').fadeOut(5);
+		$('#ingresa-login').fadeIn(500);
+	}
+	function password_on() {
+		$('#registrate-login').fadeOut(5);
+		$('#ingresa-login').fadeOut(5);
+		$('#password-login').fadeIn(500);
+	}	
+	function todos() {
+	    $('.clase-robo').fadeIn(500);
+	    $('.clase-accidente-vial').fadeIn(500);
+	    $('.clase-incendios').fadeIn(500);
+	    $('.clase-violencia-calle').fadeIn(500);
+	    $('.clase-violencia-domestica').fadeIn(500);
+	    $('.clase-sospechoso').fadeIn(500);
+	    $('.clase-otros').fadeIn(500);
+	    $('.clase-acoso-callejero').fadeIn(500);
+	    
+	    $("#todos-boton").addClass("activo");
+	    $("#robo-boton").removeClass("activo");
+	    $("#accidente-vial-boton").removeClass("activo");
+	    $("#incendios-boton").removeClass("activo");
+	    $("#violencia-calle-boton").removeClass("activo");
+	    $("#violencia-domestica-boton").removeClass("activo");
+	    $("#sospechoso-boton").removeClass("activo");
+	    $("#otros-boton").removeClass("activo");   
+	    $("#acoso-boton").removeClass("activo");
+	}
+	function robo() {
+	    $('.clase-robo').fadeIn(500);
+	    $('.clase-accidente-vial').fadeOut(500);
+	    $('.clase-incendios').fadeOut(500);
+	    $('.clase-violencia-calle').fadeOut(500);
+	    $('.clase-violencia-domestica').fadeOut(500);
+	    $('.clase-sospechoso').fadeOut(500);
+	    $('.clase-otros').fadeOut(500);
+	    $('.clase-acoso-callejero').fadeOut(500);
+	    
+	    $("#todos-boton").removeClass("activo");
+	    $("#robo-boton").addClass("activo");
+	    $("#accidente-vial-boton").removeClass("activo");
+	    $("#incendios-boton").removeClass("activo");
+	    $("#violencia-calle-boton").removeClass("activo");
+	    $("#violencia-domestica-boton").removeClass("activo");
+	    $("#sospechoso-boton").removeClass("activo");
+	    $("#otros-boton").removeClass("activo");
+	    $("#acoso-boton").removeClass("activo");	    
+	}
+	function accidente_vial() {
+	    $('.clase-robo').fadeOut(500);
+	    $('.clase-accidente-vial').fadeIn(500);
+	    $('.clase-incendios').fadeOut(500);
+	    $('.clase-violencia-calle').fadeOut(500);
+	    $('.clase-violencia-domestica').fadeOut(500);
+	    $('.clase-sospechoso').fadeOut(500);
+	    $('.clase-otros').fadeOut(500);
+	    $('.clase-acoso-callejero').fadeOut(500);
+	    
+	    $("#todos-boton").removeClass("activo");
+	    $("#robo-boton").removeClass("activo");
+	    $("#accidente-vial-boton").addClass("activo");
+	    $("#incendios-boton").removeClass("activo");
+	    $("#violencia-calle-boton").removeClass("activo");
+	    $("#violencia-domestica-boton").removeClass("activo");
+	    $("#sospechoso-boton").removeClass("activo");
+	    $("#otros-boton").removeClass("activo");
+	    $("#acoso-boton").removeClass("activo");
+	}
+	function incendios() {
+	    $('.clase-robo').fadeOut(500);
+	    $('.clase-accidente-vial').fadeOut(500);
+	    $('.clase-incendios').fadeIn(500);
+	    $('.clase-violencia-calle').fadeOut(500);
+	    $('.clase-violencia-domestica').fadeOut(500);
+	    $('.clase-sospechoso').fadeOut(500);
+	    $('.clase-otros').fadeOut(500);
+	    $('.clase-acoso-callejero').fadeOut(500);
+	    
+	    $("#todos-boton").removeClass("activo");
+	    $("#robo-boton").removeClass("activo");
+	    $("#accidente-vial-boton").removeClass("activo");
+	    $("#incendios-boton").addClass("activo");
+	    $("#violencia-calle-boton").removeClass("activo");
+	    $("#violencia-domestica-boton").removeClass("activo");
+	    $("#sospechoso-boton").removeClass("activo");
+	    $("#otros-boton").removeClass("activo");	
+	    $("#acoso-boton").removeClass("activo");    
+	}
+	function violencia_calle() {
+	    $('.clase-robo').fadeOut(500);
+	    $('.clase-accidente-vial').fadeOut(500);
+	    $('.clase-incendios').fadeOut(500);
+	    $('.clase-violencia-calle').fadeIn(500);
+	    $('.clase-violencia-domestica').fadeOut(500);
+	    $('.clase-sospechoso').fadeOut(500);
+	    $('.clase-otros').fadeOut(500);
+	    $('.clase-acoso-callejero').fadeOut(500);
+	    
+	    $("#todos-boton").removeClass("activo");
+	    $("#robo-boton").removeClass("activo");
+	    $("#accidente-vial-boton").removeClass("activo");
+	    $("#incendios-boton").removeClass("activo");
+	    $("#violencia-calle-boton").addClass("activo");
+	    $("#violencia-domestica-boton").removeClass("activo");
+	    $("#sospechoso-boton").removeClass("activo");
+	    $("#otros-boton").removeClass("activo");	
+	    $("#acoso-boton").removeClass("activo");    
+	}
+	function violencia_domestica() {
+	    $('.clase-robo').fadeOut(500);
+	    $('.clase-accidente-vial').fadeOut(500);
+	    $('.clase-incendios').fadeOut(500);
+	    $('.clase-violencia-calle').fadeOut(500);
+	    $('.clase-violencia-domestica').fadeIn(500);
+	    $('.clase-sospechoso').fadeOut(500);
+	    $('.clase-otros').fadeOut(500);
+	    $('.clase-acoso-callejero').fadeOut(500);
+	    
+	    $("#todos-boton").removeClass("activo");
+	    $("#robo-boton").removeClass("activo");
+	    $("#accidente-vial-boton").removeClass("activo");
+	    $("#incendios-boton").removeClass("activo");
+	    $("#violencia-calle-boton").removeClass("activo");
+	    $("#violencia-domestica-boton").addClass("activo");
+	    $("#sospechoso-boton").removeClass("activo");
+	    $("#otros-boton").removeClass("activo");	
+	    $("#acoso-boton").removeClass("activo");    
+	}
+	function sospechoso() {
+	    $('.clase-robo').fadeOut(500);
+	    $('.clase-accidente-vial').fadeOut(500);
+	    $('.clase-incendios').fadeOut(500);
+	    $('.clase-violencia-calle').fadeOut(500);
+	    $('.clase-violencia-domestica').fadeOut(500);
+	    $('.clase-sospechoso').fadeIn(500);
+	    $('.clase-otros').fadeOut(500);
+	    $('.clase-acoso-callejero').fadeOut(500);
+	    
+	    $("#todos-boton").removeClass("activo");
+	    $("#robo-boton").removeClass("activo");
+	    $("#accidente-vial-boton").removeClass("activo");
+	    $("#incendios-boton").removeClass("activo");
+	    $("#violencia-calle-boton").removeClass("activo");
+	    $("#violencia-domestica-boton").removeClass("activo");
+	    $("#sospechoso-boton").addClass("activo");
+	    $("#otros-boton").removeClass("activo");
+	    $("#acoso-boton").removeClass("activo");
+	}
+	function acoso() {
+	    $('.clase-robo').fadeOut(500);
+	    $('.clase-accidente-vial').fadeOut(500);
+	    $('.clase-incendios').fadeOut(500);
+	    $('.clase-violencia-calle').fadeOut(500);
+	    $('.clase-violencia-domestica').fadeOut(500);
+	    $('.clase-sospechoso').fadeOut(500);
+	    $('.clase-otros').fadeOut(500);
+	    $('.clase-acoso-callejero').fadeIn(500);
+	    
+	    $("#todos-boton").removeClass("activo");
+	    $("#robo-boton").removeClass("activo");
+	    $("#accidente-vial-boton").removeClass("activo");
+	    $("#incendios-boton").removeClass("activo");
+	    $("#violencia-calle-boton").removeClass("activo");
+	    $("#violencia-domestica-boton").removeClass("activo");
+	    $("#sospechoso-boton").removeClass("activo");
+	    $("#otros-boton").removeClass("activo");
+	    $("#acoso-boton").addClass("activo");	    
+	}
+	function otros() {
+	    $('.clase-robo').fadeOut(500);
+	    $('.clase-accidente-vial').fadeOut(500);
+	    $('.clase-incendios').fadeOut(500);
+	    $('.clase-violencia-calle').fadeOut(500);
+	    $('.clase-violencia-domestica').fadeOut(500);
+	    $('.clase-sospechoso').fadeOut(500);
+	    $('.clase-otros').fadeIn(500);
+	    $('.clase-acoso-callejero').fadeOut(500);
+	    
+	    $("#todos-boton").removeClass("activo");
+	    $("#robo-boton").removeClass("activo");
+	    $("#accidente-vial-boton").removeClass("activo");
+	    $("#incendios-boton").removeClass("activo");
+	    $("#violencia-calle-boton").removeClass("activo");
+	    $("#violencia-domestica-boton").removeClass("activo");
+	    $("#sospechoso-boton").removeClass("activo");
+	    $("#otros-boton").addClass("activo");	
+	    $("#acoso-boton").removeClass("activo");    
+	}
+	//PARA MAPA Y REPORTE
+	function modulo_reporte() {
+	    $('#modulos-mapa').fadeOut(500);
+	    $('#modulos-reporte').fadeIn(500);
+	    $('#escoder-mapa').fadeIn(500);
+	    $('.contenido .inline-list').css('margin-top','1rem');
+	    $("#modulos-mapa-boton").removeClass("activo");
+	    $("#modulos-reporte-boton").addClass("activo");	     
+	}	
+	function modulo_mapa() {
+	    $('#modulos-mapa').fadeIn(500);
+	    $('#modulos-reporte').fadeOut(500);
+	    $('#escoder-mapa').fadeOut(500);
+	    $('.contenido .inline-list').css('margin-top','3.5rem');
+	    $("#modulos-mapa-boton").addClass("activo");
+	    $("#modulos-reporte-boton").removeClass("activo");	    
+	}		
+	
+	//NUEVO REPORTE
+	function reporte_nuevo() {
+		$('#reportar_de_nuevo').fadeToggle(500);
+	}
+	</script>    
+    {/if}
+    
     <script>
       $(document).foundation();
     </script>
@@ -116,10 +401,39 @@
 
     
     <!--ADD THIS-->
-    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=hermanmarin"></script>
 	
-	{if segment_1 =='eres-un-liderman' OR segment_1 =='chat-del-ciudadano' OR segment_2 =='conductor' OR segment_2 =='articulo'}
+	<!--DISQUS-->
+	{if segment_2 =='articulo' OR segment_2=='conductor' OR segment_1=='capacitacion' OR segment_2=='hecho' }
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'radiourbenuevo'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+  </script>
+  {/if} 
+  
+  {if segment_1=='eres-un-liderman'}  
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'chatliderman9'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>    
+  {/if}
+    
+    
+	{if segment_1 =='chat-del-ciudadano'  }
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'radiourbe'; // required: replace example with your forum shortname
@@ -130,34 +444,45 @@
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script>	
-    {/if}  
+    </script>
+    {/if}      
     
-<!--Google Analytics-->    
-<!--<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-47123007-1', 'radiourbe.pe');
-  ga('send', 'pageview');
-
-</script>-->    
-
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-47123007-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
-
-ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
+	<!--ANALYTICS-->
+	<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-47123007-1']);
+	_gaq.push(['_trackPageview']);
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+	ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	</script>
+	
+	<!--CRAZY EGG-->
+	<script type="text/javascript">
+	setTimeout(function(){var a=document.createElement("script");
+	var b=document.getElementsByTagName("script")[0];
+	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0022/5945.js?"+Math.floor(new Date().getTime()/3600000);
+	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+	</script>
+	
+	<!-- Facebook Conversion Code for Chat 100 -->
+	<script>(function() {
+	var _fbq = window._fbq || (window._fbq = []);
+	if (!_fbq.loaded) {
+	var fbds = document.createElement('script');
+	fbds.async = true;
+	fbds.src = '//connect.facebook.net/en_US/fbds.js';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(fbds, s);
+	_fbq.loaded = true;
+	}
+	})();
+	window._fbq = window._fbq || [];
+	window._fbq.push(['track', '6015356965861', {'value':'0.01','currency':'PEN'}]);
+	</script>
+	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6015356965861&amp;cd[value]=0.01&amp;cd[currency]=PEN&amp;noscript=1" /></noscript>	
     
   </body>
 </html>

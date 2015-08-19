@@ -1,0 +1,52 @@
+{exp:freeform:entries
+    form_id="2"
+    limit="1"
+    entry_id='{embed:member-entryid}'
+}
+<div class="row contenido-hecho-comentario">
+	<div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+		<p class="text-center">
+		{if freeform:field:imagen_del_hecho}
+			<img src="{site_url}images/red-seguridad/{freeform:field:imagen_del_hecho}" alt="{freeform:field:tipo_de_hecho}">
+		{if:else}
+			<img src="http://dummyimage.com/600x400/E0158D/FFF.jpg&text=Hecho+reportado">								
+		{/if}
+		</p>	
+	</div>
+	<div class="small-12 medium-10 medium-centered large-8 large-centered columns">
+		<h3 class="text-center">{freeform:field:tipo_de_hecho}</h3>
+	    <p class="text-center">Reportado por {freeform:author}</p>
+		<p class="text-center hecho-direccion">{freeform:entry_date format="%F %j, %Y a las %g:%i %a"}<br>{freeform:field:direccion}</p>
+		<p class="text-center">{freeform:field:descripcion}</p>
+	</div>
+</div>
+
+<div class="row contenido contenido-hecho-comentario">
+	<div class="small-12 medium-10 medium-centered large-10 large-centered columns">
+		<div class="row">	
+			<div class="small-12 medium-12 large-6 columns">
+				<div class="panel">
+					{embed="includes/share-buttons"}
+				</div>
+				<div class="panel">	
+					<h6>SÍGUENOS EN LAS REDES</h6>
+					<div class="addthis_toolbox addthis_32x32_style addthis_default_style fanpages">
+						<a class="addthis_button_facebook_follow" addthis:userid="radiourbe.pe"></a>
+						<a class="addthis_button_twitter_follow" addthis:userid="radiourbeperu"></a>
+					</div>
+				</div>
+
+			</div>	
+			<div class="small-12 medium-12 large-6 columns">
+				<div class="panel">
+					<h6>ÚNETE AL DIÁLOGO</h6>
+					<p>Usa el <a href="https://twitter.com/search?q=%23redseguridadciudadana" target="_blank">#redseguridadciudadana</a> para compartir tus comentarios en Twitter</p>
+					<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/radiourbeperu" data-widget-id="472401676867891201">Tweets by @radiourbeperu</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{/exp:freeform:entries}	

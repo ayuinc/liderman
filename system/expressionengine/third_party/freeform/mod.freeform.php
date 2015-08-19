@@ -8,7 +8,7 @@
  * @copyright	Copyright (c) 2008-2014, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.1.6
+ * @version		4.1.8
  * @filesource	freeform/mod.freeform.php
  */
 
@@ -2482,7 +2482,6 @@ class Freeform extends Module_builder_freeform
 			);
 		}
 
-
 		// -------------------------------------
 		//	freeform:all_form_fields
 		// -------------------------------------
@@ -2526,13 +2525,17 @@ class Freeform extends Module_builder_freeform
 			$general_error_data = $_general_error_data;
 		}
 
-		$variables['freeform:general_errors'] = $general_error_data;
+		$variables['freeform:general_errors']	= $general_error_data;
+		$variables['freeform:field_errors']		= ! empty($field_error_data);
 
 		//have to do this so the conditional will work,
 		//seems that parse variables doesn't think a non-empty array = YES
 		$tagdata = ee()->functions->prep_conditionals(
 			$tagdata,
-			array('freeform:general_errors' => ! empty($general_error_data))
+			array(
+				'freeform:general_errors'	=> ! empty($general_error_data),
+				'freeform:field_errors'		=> ! empty($field_error_data)
+			)
 		);
 
 		// -------------------------------------
@@ -3438,17 +3441,20 @@ class Freeform extends Module_builder_freeform
 			}
 			else
 			{
-				ee()->db->from('captcha');
-				ee()->db->where(array(
-					'word'			=> ee()->input->post('captcha'),
-					'ip_address'	=> ee()->input->ip_address(),
-					'date >'		=> ee()->localize->now - 7200
-				));
+				ee()->db->where('word', ee()->input->post('captcha', TRUE));
+				ee()->db->where('ip_address', ee()->input->ip_address());
+				ee()->db->where('date > ', '(UNIX_TIMESTAMP()-7200)', FALSE);
 
-				if (ee()->db->count_all_results() == 0)
+				if ( ! ee()->db->count_all_results('captcha'))
 				{
 					$errors[] = lang('captcha_required');
 				}
+
+				ee()->db->where('word', ee()->input->post('captcha', TRUE));
+				ee()->db->where('ip_address', ee()->input->ip_address());
+				ee()->db->where('date < ', '(UNIX_TIMESTAMP()-7200)', FALSE);
+
+				ee()->db->delete('captcha');
 			}
 		}
 
@@ -4021,7 +4027,13 @@ class Freeform extends Module_builder_freeform
 			$data['hidden_fields']
 		);
 
-		$return		.= stripslashes($data['tagdata']);
+		//Rremoved stripslashes as it was affecting html5 regex
+		//validation and no one can really remember why it was
+		//here in the first place (since FF 1.x). Might be that
+		//it was a legacy thing with EE 1.x.
+		//$return		.= stripslashes($data['tagdata']);
+
+		$return		.= $data['tagdata'];
 
 		$return		.= "</form>";
 
@@ -5302,19 +5314,56 @@ class Freeform extends Module_builder_freeform
 
 	protected function no_results_error($line = '')
 	{
+		$opener		= LD . 'if ';
+		$closer		= LD . '/if' . RD;
+		$q_closer	= preg_quote($closer, '/');
+		$tagdata	= ee()->TMPL->tagdata;
+
 		if ($line != '' AND
 			preg_match(
-				"/".LD."if " .preg_quote($this->lower_name).":error" .
-					RD."(.*?)".LD.preg_quote("/", '/')."if".RD."/s",
-				ee()->TMPL->tagdata,
+				"/". $opener . preg_quote($this->lower_name) . ":error" .
+					RD."(.*?)". $q_closer ."/s",
+				$tagdata,
 				$match
 			)
 		)
 		{
+			//This can have some nested if statements so we need to
+			//make sure that we have balanced {if} blocks
+			$td			= $match[1];
+			$openers	= substr_count($td, $opener);
+			$closers	= substr_count($td, $closer);
+
+			//nested IFs?
+			if ($openers && $openers > $closers)
+			{
+				$loop = 0;
+
+				while ($openers != $closers)
+				{
+					//protection
+					if ($loop++ > 500)
+					{
+						break;
+						return ee()->TMPL->no_results();
+					}
+
+					$sub_td = substr($tagdata, strpos($tagdata, $td) + strlen($td));
+					$td = $td . substr(
+						$sub_td,
+						strpos($sub_td, $closer),
+						strpos($sub_td, $closer) + strlen($closer)
+					);
+
+					$openers	= substr_count($td, $opener);
+					$closers	= substr_count($td, $closer);
+				}
+			}
+
 			$error_tag = $this->lower_name . ":error";
 
 			return ee()->TMPL->parse_variables(
-				$match[1],
+				$td,
 				array(array(
 					$error_tag		=> $line,
 					'error_message' => lang($line)
@@ -5322,9 +5371,9 @@ class Freeform extends Module_builder_freeform
 			);
 		}
 		else if ( preg_match(
-				"/".LD."if " .preg_quote($this->lower_name).":no_results" .
-					RD."(.*?)".LD.preg_quote("/", '/')."if".RD."/s",
-				ee()->TMPL->tagdata,
+				"/". $opener .preg_quote($this->lower_name).":no_results" .
+					RD."(.*?)". $q_closer ."/s",
+				$tagdata,
 				$match
 			)
 		)
