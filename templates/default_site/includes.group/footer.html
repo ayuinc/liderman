@@ -81,6 +81,7 @@
     <script src="{site_url}js/foundation.min.js"></script>
     <script src="{site_url}js/foundation/foundation.topbar.js"></script>
     <script src="{site_url}js/foundation/foundation.magellan.js"></script>
+
     
     <!--Typekit-->
     <script type="text/javascript" src="//use.typekit.net/yfg8sfb.js"></script>
@@ -89,7 +90,7 @@
     {if segment_1 == ''}
 	    <script src="{site_url}js/foundation/jquery.jcarousel.min.js"></script>
 	    <script src="{site_url}js/foundation/jcarousel.responsive.js"></script>
-	    <script src="{site_url}js/foundation.orbit.js"></script>
+	    <script src="{site_url}js/foundation/foundation.orbit.js"></script>
 	    <script>
 	    $(document).ready(function(){ 
 	    $( "#down" ).click(function( event ) { 
@@ -144,7 +145,24 @@
   ga('send', 'pageview');
 
 </script>-->    
-
+<script type="text/javascript">
+	$('.audio').hide();
+		$(".btn-ifm1").addClass("boton-activo");
+		$(document).ready(function(){
+	    $(".btn-ifm1").click(function(){
+		    $(".btn-ifm1").addClass("boton-activo");
+		    $(".btn-ifm2").removeClass("boton-activo");
+	      $(".video").show(10);
+	      $(".audio").hide(10);
+	    });
+	    $(".btn-ifm2").click(function(){
+		    $(".btn-ifm2").addClass("boton-activo");
+		    $(".btn-ifm1").removeClass("boton-activo");
+	      $(".audio").show(10);
+	      $(".video").hide(10);
+	    });    
+		});
+</script>
 <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-47123007-1']);
